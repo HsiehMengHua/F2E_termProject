@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>launch</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="css/bootstrap-material-datetimepicker.css">
+</head>
+<body>
+  <form action="launching.php" method="post">
+    <ul>
+      <li><label>哪個海灘？</label><br><input type="text" name="location"></li>
+      <li><label>日期</label><br><input type="text" name="date" id="date"></li>
+      <li><label>時間 </label><br><input type="text" name="time" id="time"></li>
+      <li><label>要提醒大家什麼？ </label><br><textarea name="description" cols="30" rows="10"></textarea></li>
+      <li><input type=button value="取消" onclick="history.back();"><input type="submit" value="送出"></li>
+    </ul>
+  </form>
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script> <!-- 有 .min.js 在local資料夾 -->
+  <script src="js/bootstrap-material-datetimepicker.js"></script>
+  <script>
+	  $(function() {
+        $('#date').bootstrapMaterialDatePicker({ weekStart: 0, time: false, minDate: new Date() });
+        $('#time').bootstrapMaterialDatePicker({ date: false, format: 'HH:mm', switchOnClick: true });
+	  });
+  </script>
+</body>
+</html>
