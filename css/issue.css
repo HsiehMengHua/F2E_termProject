@@ -1,4 +1,5 @@
 /* Global Settings */
+
 body{
   background-color: #333333;
   margin: 0;
@@ -11,6 +12,14 @@ a{
 p{
     font-family: 微軟正黑體;
 }
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Nav Settings */
 
 nav{
   height: 65px;
@@ -32,14 +41,17 @@ nav{
   font-size: 16px;
 }
 
+/* Container Settings */
+
 .container{
   margin-top: 95px;
-  max-width: 860px;
+  margin-bottom: 165px;
+  width: 860px;
   margin-left: auto;
   margin-right: auto;
 }
 
-#artical-title{
+#issue-title{
   margin: 0;
   font-size: 36px;
   font-weight: bold;
@@ -51,4 +63,31 @@ nav{
   width: 100%;
   height: 5px;
   background-color: #75da7a;
+}
+
+.issues{
+  margin-top: 65px;
+}
+
+.issues li{
+  display: flex;
+  margin-bottom: 40px;
+}
+
+.issue-image{
+  width: 320px;
+  height: 240px;
+  background-color: gray;
+}
+
+.issue-content{
+  width: 540px;
+  height: 240px;
+  background-color: white;
+}
+
+/* Footer Settings */
+footer{
+  background-image: url('../img/footer.jpg');
+  height: 142px;
 }
