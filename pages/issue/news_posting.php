@@ -96,6 +96,13 @@ if($conn->query($sql_insert)){
         echo "html上傳失敗";
     }
   }
+  
+  // Redirect
+  $host  = $_SERVER['HTTP_HOST'];
+  $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+  $extra = "issue_article.php?id=$issue_id";
+  header("Location: http://$host$uri/$extra");
+  exit();
 }else{
   echo "資料新增失敗: ".$conn->error;
 }

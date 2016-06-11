@@ -19,15 +19,16 @@ $count = $row_views["views"]+1;
 $sql_countViews = "UPDATE `issue` SET `views` = '$count' WHERE `id` = $issue_id";
 $conn->query($sql_countViews);
 
-// 選一個月內瀏覽次數最高的前7個報導，sidebar用
-$sql_popular = "SELECT `id`,`title` FROM `issue` WHERE `release_datetime` BETWEEN DATE_SUB(release_datetime,INTERVAL 30 DAY) AND NOW() ORDER BY `views` DESC LIMIT 7";
+// 選60天內瀏覽次數最高的前7個報導，sidebar用
+$sql_popular = "SELECT `id`,`title` FROM `issue` WHERE `release_datetime` BETWEEN DATE_SUB(release_datetime,INTERVAL 60 DAY) AND NOW() ORDER BY `views` DESC LIMIT 7";
 $result_popular = $conn->query($sql_popular);
 $popularIdList = [];
 $popularTitleList = [];
+// 把多項結果存成陣列
 while($row_popular = $result_popular->fetch_assoc()){
   array_push($popularIdList,$row_popular['id']);
   array_push($popularTitleList,$row_popular['title']);
-} // 把多項結果存成陣列
+}
 
 ?>
 
