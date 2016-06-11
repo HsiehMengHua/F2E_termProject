@@ -18,6 +18,10 @@ nav{
   align-items: center;
 }
 
+#nav-left{
+
+}
+
 #nav-right{
   width: 85px;
   display: flex;
