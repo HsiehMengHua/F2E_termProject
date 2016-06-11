@@ -40,6 +40,12 @@ nav{
   margin-right: auto;
 }
 
+@media screen and (max-width: 480px) {
+  .container{
+    width: 100%;
+  }
+}
+
 #issue-title{
   color: #e0e0e0;
 }
@@ -84,40 +90,17 @@ nav{
   .col-xs-9{width: 75%;}
   .col-xs-10{width: 83.332%;}
   .col-xs-11{width: 91.662%;}
+  .col-xs-12{width: 100%;}
 
-  .issues li{
-    display: block;
+  .issues {
+    ul{
+      padding: 0 10px;
+      li{
+        flex-direction: column;
+      }
+    }
   }
 }
 
 /* Footer Settings */
-footer{
-  background-color: #e0caad;
-  background-image: url(../img/footer.jpg);
-  background-position: left center;
-  padding: 40px 0;
-
-  ul{
-    width: 593.06px;
-    margin: auto;
-
-    li{
-      font-size: 87%;
-      display: inline-block;
-      padding: 0 20px;
-      border-left: 1px solid #313b4f;
-
-      &:first-child{
-        padding-left: 0;
-        border: 0;
-      }
-    }
-  }
-
-  p{
-    width: 156px;
-    margin: auto;
-    font-size: 87%;
-    margin-top: 20px;
-  }
-}
+@import "footer";

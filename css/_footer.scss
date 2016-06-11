@@ -1,0 +1,33 @@
+footer{
+  background-color: #e0caad;
+  background-image: url(../img/footer.jpg);
+  background-position: left center;
+  padding: 40px 0;
+
+  ul{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+
+    li{
+      font-size: 87%;
+      padding: 0 20px;
+      border-left: 1px solid #313b4f;
+
+      &:first-child{
+        border: 0;
+      }
+    }
+  }
+
+  p{
+    width: 156px;
+    margin: auto;
+    font-size: 87%;
+    margin-top: 20px;
+  }
+
+  @media screen and (max-width: 480px) {
+
+  }
+}
