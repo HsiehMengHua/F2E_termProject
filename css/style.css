@@ -12,11 +12,8 @@ html, body {
   font-size: 16px;
   font-family: "Noto Sans TC", , sans-serif;
   color: #313b4f;
-  letter-spacing: 2px;
   text-decoration: none;
-}
-
-.clear:after {
+}.clear:after {
   content: "";
   display: block;
   clear: both; }
@@ -25,10 +22,15 @@ html, body {
   float: left;
 }
 
+.pull-right {
+  float: right;
+}
+
 li {
   list-style: none;
 }
 
 a {
   text-decoration: none;
+  color: inherit;
 }
