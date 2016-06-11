@@ -58,15 +58,14 @@ footer {
   background-position: left center;
   padding: 40px 0; }
   footer ul {
-    width: 593.06px;
-    margin: auto; }
+    margin: auto;
+    display: flex;
+    justify-content: center; }
     footer ul li {
       font-size: 87%;
-      display: inline-block;
       padding: 0 20px;
       border-left: 1px solid #313b4f; }
       footer ul li:first-child {
-        padding-left: 0;
         border: 0; }
   footer p {
     width: 156px;

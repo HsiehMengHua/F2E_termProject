@@ -9,10 +9,10 @@ nav{
 main>.container{
   max-width: 990px;
   margin: 95px auto 0 auto;
-  
+
   .main-content{
     width: 67%;
-    
+
     .heading{
       h1{
         padding-bottom: 37px;
@@ -23,7 +23,7 @@ main>.container{
         font-size: 0.87em;
         color: #9c9c9c;
         margin: 20px 0 65px 0;
-        
+
         .material-icons{
           font-size: 1em;
         }
@@ -34,48 +34,48 @@ main>.container{
       background-color: lightgray;
       width: 100%;
     }
-    
+
     article{
       padding-top: 65px;
       margin-bottom: 120px;
-      
+
       h2{
         line-height: 4em;
         font-weight: 500;
       }
     }
   }
-  
+
   .sidebar{
     width: 30%;
     background-color: rgba(143, 213, 195, 0.25);
     padding: 30px;
     position: relative;
-    
+
     h3{
       line-height: 2.5em;
     }
-    
+
     li{
       margin: 15px 0;
       font-size: 0.88em;
     }
   }
-  
+
   .other_news{
     .container{
       padding: 25px 40px;
       background-color: #e5e5e5;
-      
+
       .prev-news, .next-news{
         width: 270px;
       }
-      
+
       p{
         font-size: 0.88em;
         color: #9b9b9b;
       }
-      
+
       .image{
         height: 152px;
         background-color: lightgray;
@@ -85,33 +85,4 @@ main>.container{
   }
 }
 
-footer{
-  background-color: #e0caad;
-  background-image: url(../img/footer.jpg);
-  background-position: left center;
-  padding: 40px 0;
-  
-  ul{
-    width: 593.06px;
-    margin: auto;
-    
-    li{
-      font-size: 87%;
-      display: inline-block;
-      padding: 0 20px;
-      border-left: 1px solid #313b4f;
-      
-      &:first-child{
-        padding-left: 0;
-        border: 0;
-      }
-    }
-  }
-  
-  p{
-    width: 156px;
-    margin: auto;
-    font-size: 87%;
-    margin-top: 20px;
-  }
-}
+@import "footer";
