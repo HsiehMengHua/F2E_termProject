@@ -4,9 +4,11 @@ session_start();
 include("../connectDB.php");
 
 $title = $_POST["title"];
+date_default_timezone_set("Asia/Taipei");
+$datetime = date("Y-m-d H:i:s");
 $source = $_POST["source"];
 
-$sql_insert = "INSERT INTO `issue` (`id`, `title`, `source`) VALUES (NULL, '$title', '$source')"; 
+$sql_insert = "INSERT INTO `issue` (`id`, `title`,`release_datetime`, `source`) VALUES (NULL, '$title','$datetime', '$source')"; 
 
 if($conn->query($sql_insert)){
   
