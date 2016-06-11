@@ -1,0 +1,123 @@
+/* Global Settings */
+
+body{
+  background-color: #333333;
+}
+
+a{
+  text-decoration: none;
+}
+
+/* Nav Settings */
+
+nav{
+  height: 65px;
+  padding: 17px 50px;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#nav-right{
+  width: 85px;
+  display: flex;
+  justify-content: space-between;
+
+  a{
+    color: #333333;
+    font-size: 16px;
+  }
+}
+
+/* Container Settings */
+
+.container{
+  margin-top: 95px;
+  margin-bottom: 165px;
+  width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#issue-title{
+  color: #e0e0e0;
+}
+
+#green-bar{
+  margin-top: 24px;
+  width: 100%;
+  height: 5px;
+  background-color: #75da7a;
+}
+
+.issues{
+  margin-top: 65px;
+
+  li{
+    display: flex;
+    margin-bottom: 40px;
+  }
+}
+
+.issue-image{
+  width: 320px;
+  height: 240px;
+  background-color: gray;
+}
+
+.issue-content{
+  width: 540px;
+  height: 240px;
+  background-color: white;
+}
+
+@media screen and (max-width: 480px){
+  .col-xs-1{width: 8.332%;}
+  .col-xs-2{width: 16.662%;}
+  .col-xs-3{width: 25%;}
+  .col-xs-4{width: 33.332%;}
+  .col-xs-5{width: 41.662%;}
+  .col-xs-6{width: 50%;}
+  .col-xs-7{width: 58.331%;}
+  .col-xs-8{width: 66.662%;}
+  .col-xs-9{width: 75%;}
+  .col-xs-10{width: 83.332%;}
+  .col-xs-11{width: 91.662%;}
+
+  .issues li{
+    display: block;
+  }
+}
+
+/* Footer Settings */
+footer{
+  background-color: #e0caad;
+  background-image: url(../img/footer.jpg);
+  background-position: left center;
+  padding: 40px 0;
+
+  ul{
+    width: 593.06px;
+    margin: auto;
+
+    li{
+      font-size: 87%;
+      display: inline-block;
+      padding: 0 20px;
+      border-left: 1px solid #313b4f;
+
+      &:first-child{
+        padding-left: 0;
+        border: 0;
+      }
+    }
+  }
+
+  p{
+    width: 156px;
+    margin: auto;
+    font-size: 87%;
+    margin-top: 20px;
+  }
+}

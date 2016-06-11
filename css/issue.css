@@ -1,83 +1,117 @@
 /* Global Settings */
+body {
+  background-color: #333333; }
 
-body{
-  background-color: #333333;
-}
-
-a{
-  text-decoration: none;
-}
+a {
+  text-decoration: none; }
 
 /* Nav Settings */
-
-nav{
+nav {
   height: 65px;
+  padding: 17px 50px;
   background-color: white;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
+  align-items: center; }
 
-#nav-left{
-
-}
-
-#nav-right{
+#nav-right {
   width: 85px;
   display: flex;
-  justify-content: space-between;
-  margin-right: 40px;
-}
-
-#nav-right a{
-  color: #333333;
-  font-size: 16px;
-}
+  justify-content: space-between; }
+  #nav-right a {
+    color: #333333;
+    font-size: 16px; }
 
 /* Container Settings */
-
-.container{
+.container {
   margin-top: 95px;
   margin-bottom: 165px;
   width: 860px;
   margin-left: auto;
-  margin-right: auto;
-}
+  margin-right: auto; }
 
-#issue-title{
-  color: #e0e0e0;
-}
+#issue-title {
+  color: #e0e0e0; }
 
-#green-bar{
+#green-bar {
   margin-top: 24px;
   width: 100%;
   height: 5px;
-  background-color: #75da7a;
-}
+  background-color: #75da7a; }
 
-.issues{
-  margin-top: 65px;
-}
+.issues {
+  margin-top: 65px; }
+  .issues li {
+    display: flex;
+    margin-bottom: 40px; }
 
-.issues li{
-  display: flex;
-  margin-bottom: 40px;
-}
-
-.issue-image{
+.issue-image {
   width: 320px;
   height: 240px;
-  background-color: gray;
-}
+  background-color: gray; }
 
-.issue-content{
+.issue-content {
   width: 540px;
   height: 240px;
-  background-color: white;
-}
+  background-color: white; }
 
+@media screen and (max-width: 480px) {
+  .col-xs-1 {
+    width: 8.332%; }
+
+  .col-xs-2 {
+    width: 16.662%; }
+
+  .col-xs-3 {
+    width: 25%; }
+
+  .col-xs-4 {
+    width: 33.332%; }
+
+  .col-xs-5 {
+    width: 41.662%; }
+
+  .col-xs-6 {
+    width: 50%; }
+
+  .col-xs-7 {
+    width: 58.331%; }
+
+  .col-xs-8 {
+    width: 66.662%; }
+
+  .col-xs-9 {
+    width: 75%; }
+
+  .col-xs-10 {
+    width: 83.332%; }
+
+  .col-xs-11 {
+    width: 91.662%; }
+
+  .issues li {
+    display: block; } }
 /* Footer Settings */
-footer{
-  background-image: url('../img/footer.jpg');
-  height: 142px;
-}
+footer {
+  background-color: #e0caad;
+  background-image: url(../img/footer.jpg);
+  background-position: left center;
+  padding: 40px 0; }
+  footer ul {
+    width: 593.06px;
+    margin: auto; }
+    footer ul li {
+      font-size: 87%;
+      display: inline-block;
+      padding: 0 20px;
+      border-left: 1px solid #313b4f; }
+      footer ul li:first-child {
+        padding-left: 0;
+        border: 0; }
+  footer p {
+    width: 156px;
+    margin: auto;
+    font-size: 87%;
+    margin-top: 20px; }
+
+/*# sourceMappingURL=issue.css.map */
