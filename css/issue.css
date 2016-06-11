@@ -30,6 +30,9 @@ nav {
   margin-left: auto;
   margin-right: auto; }
 
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100%; } }
 #issue-title {
   color: #e0e0e0; }
 
@@ -89,8 +92,13 @@ nav {
   .col-xs-11 {
     width: 91.662%; }
 
-  .issues li {
-    display: block; } }
+  .col-xs-12 {
+    width: 100%; }
+
+  .issues ul {
+    padding: 0 10px; }
+    .issues ul li {
+      flex-direction: column; } }
 /* Footer Settings */
 footer {
   background-color: #e0caad;

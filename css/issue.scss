@@ -40,6 +40,12 @@ nav{
   margin-right: auto;
 }
 
+@media screen and (max-width: 480px) {
+  .container{
+    width: 100%;
+  }
+}
+
 #issue-title{
   color: #e0e0e0;
 }
@@ -84,9 +90,15 @@ nav{
   .col-xs-9{width: 75%;}
   .col-xs-10{width: 83.332%;}
   .col-xs-11{width: 91.662%;}
+  .col-xs-12{width: 100%;}
 
-  .issues li{
-    display: block;
+  .issues {
+    ul{
+      padding: 0 10px;
+      li{
+        flex-direction: column;
+      }
+    }
   }
 }
 
