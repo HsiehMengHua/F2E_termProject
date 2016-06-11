@@ -2,21 +2,10 @@
 
 body{
   background-color: #333333;
-  margin: 0;
 }
 
 a{
   text-decoration: none;
-}
-
-p{
-    font-family: 微軟正黑體;
-}
-
-ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
 }
 
 /* Nav Settings */
@@ -30,7 +19,7 @@ nav{
 }
 
 #nav-right{
-  width: 80px;
+  width: 85px;
   display: flex;
   justify-content: space-between;
   margin-right: 40px;
@@ -52,9 +41,6 @@ nav{
 }
 
 #issue-title{
-  margin: 0;
-  font-size: 36px;
-  font-weight: bold;
   color: #e0e0e0;
 }
 
