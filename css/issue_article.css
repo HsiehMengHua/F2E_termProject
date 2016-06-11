@@ -18,6 +18,8 @@ main > .container {
       font-size: 0.87em;
       color: #9c9c9c;
       margin: 20px 0 65px 0; }
+      main > .container .main-content .heading .article-info .material-icons {
+        font-size: 1em; }
     main > .container .main-content img {
       background-color: lightgray;
       width: 100%; }

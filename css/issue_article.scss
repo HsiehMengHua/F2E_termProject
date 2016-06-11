@@ -1,4 +1,5 @@
 body{position: relative;}
+
 nav{
   color: white;
   background-color: #313131;
@@ -22,6 +23,10 @@ main>.container{
         font-size: 0.87em;
         color: #9c9c9c;
         margin: 20px 0 65px 0;
+        
+        .material-icons{
+          font-size: 1em;
+        }
       }
     }
 
