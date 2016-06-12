@@ -16,5 +16,5 @@ $conn = new mysqli($hostname, $username, $password, $DBname);
 if ($conn->connect_error) {
     die("Error: "+$conn->connect_error);
 } 
-echo '<script>console.log("connected to database");</script>';
+
 ?>

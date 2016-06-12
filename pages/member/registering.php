@@ -3,10 +3,10 @@
 session_start();
 include("../connectDB.php");
 
-$email = rtrim($_POST["email"]); // 刪空白
-$password = $_POST["password"];
-$userName = $_POST["userName"];
-$phone = $_POST["phone"];
+$email = input($_POST["email"]);
+$password = input($_POST["password"]);
+$userName = input($_POST["userName"]);
+$phone = input($_POST["phone"]);
 
 $sql_insert = "INSERT INTO `member` VALUES (NULL, '$email', '$password', '$userName', '$phone')";
 if($conn->query($sql_insert)){
@@ -25,6 +25,13 @@ if($conn->query($sql_insert)){
 	exit();
 }else{
 	echo "Error: ".$conn->error;
+}
+
+function input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
 }
 
 ?>
