@@ -1,0 +1,66 @@
+nav{
+  color: white;
+  background-color: #313131;
+  padding: 17px 50px;
+  position: fixed;
+  width: 100%;
+}
+
+main{
+  height: 100%;
+  width: 100%;
+  
+  .main-image{
+    width: 30%;
+    height: 100%;
+    background-color: #5c90ac;
+    background-image: url(../img/image_register.jpg);
+    background-position: 43% 50%;
+    position: fixed;
+    top: 0;
+    z-index: -99;
+  }
+  
+  .form{
+    width: 70%;
+    padding: 150px 0 60px 0;
+    margin-left: 30%;
+    
+    ul{
+      max-width: 500px;
+      margin: auto;
+      
+      li{
+        margin-bottom: 30px;
+      }
+
+      input{
+        width: 100%;
+        padding: 10px 0;
+        border: 0;
+        border-bottom: 1px solid #313b4f;
+        outline: none;
+        
+        &:focus{
+          border-bottom: 2px solid #55bbb5;
+        }
+      }
+      
+      button.cancel{
+        float: right;
+        padding: 6px 25px;
+        font-size: 1em;
+        margin-left: 6px;
+        border: 0;
+        background-color: #d5d5d5;
+        cursor: pointer;
+      }
+      
+      button.submit{
+        @extend button.cancel;
+        background-color: #75da7a;
+        color: white;
+      }
+    }
+  }
+}

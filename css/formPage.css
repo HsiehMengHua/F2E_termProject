@@ -1,0 +1,49 @@
+nav {
+  color: white;
+  background-color: #313131;
+  padding: 17px 50px;
+  position: fixed;
+  width: 100%; }
+
+main {
+  height: 100%;
+  width: 100%; }
+  main .main-image {
+    width: 30%;
+    height: 100%;
+    background-color: #5c90ac;
+    background-image: url(../img/image_register.jpg);
+    background-position: 43% 50%;
+    position: fixed;
+    top: 0;
+    z-index: -99; }
+  main .form {
+    width: 70%;
+    padding: 150px 0 60px 0;
+    margin-left: 30%; }
+    main .form ul {
+      max-width: 500px;
+      margin: auto; }
+      main .form ul li {
+        margin-bottom: 30px; }
+      main .form ul input {
+        width: 100%;
+        padding: 10px 0;
+        border: 0;
+        border-bottom: 1px solid #313b4f;
+        outline: none; }
+        main .form ul input:focus {
+          border-bottom: 2px solid #55bbb5; }
+      main .form ul button.cancel, main .form ul button.submit {
+        float: right;
+        padding: 6px 25px;
+        font-size: 1em;
+        margin-left: 6px;
+        border: 0;
+        background-color: #d5d5d5;
+        cursor: pointer; }
+      main .form ul button.submit {
+        background-color: #75da7a;
+        color: white; }
+
+/*# sourceMappingURL=formPage.css.map */
