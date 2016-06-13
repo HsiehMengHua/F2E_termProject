@@ -29,7 +29,15 @@ footer{
     margin-top: 20px;
   }
 }
-
+@media screen and (max-width: 768px){
+  footer{
+    ul{
+      li{
+        padding: 0 10px;
+      }
+    }
+  }
+}
 @media screen and (max-width: 480px) {
   footer{
     ul{
