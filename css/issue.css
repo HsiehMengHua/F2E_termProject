@@ -8,12 +8,28 @@ a {
 /* Nav Settings */
 nav {
   height: 65px;
-  padding: 17px 50px;
   background-color: white;
   display: flex;
-  justify-content: space-between;
-  align-items: center; }
+  align-items: center;
+  justify-content: center; }
+  nav .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
 
+@media screen and (min-width: 1024px) {
+  .nav-container {
+    width: 860px; } }
+@media screen and (max-width: 1024px) {
+  .nav-container {
+    width: 100%;
+    padding: 0 40px; } }
+@media screen and (max-width: 768px) {
+  .nav-container {
+    padding: 0 20px; } }
+@media screen and (max-width: 480px) {
+  .nav-container {
+    padding: 0 10px; } }
 #nav-right {
   width: 85px;
   display: flex;
@@ -30,9 +46,6 @@ nav {
   margin-left: auto;
   margin-right: auto; }
 
-@media screen and (max-width: 480px) {
-  .container {
-    width: 100%; } }
 #issue-title {
   color: #e0e0e0; }
 
@@ -58,6 +71,134 @@ nav {
   height: 240px;
   background-color: white; }
 
+@media screen and (max-width: 1024px) {
+  .container {
+    width: 100%;
+    padding: 0 40px; } }
+@media screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 20px; } }
+@media screen and (max-width: 480px) {
+  .container {
+    width: 100%;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+
+  #green-bar {
+    width: 80%; }
+
+  .issues {
+    width: 100%; }
+    .issues ul li {
+      flex-direction: column; } }
+/* Footer Settings */
+footer {
+  background-color: #e0caad;
+  background-image: url(../img/footer.jpg);
+  background-position: left center;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  footer ul {
+    margin: auto;
+    display: flex;
+    justify-content: center; }
+    footer ul li {
+      font-size: 87%;
+      padding: 0 20px;
+      border-left: 1px solid #313b4f; }
+      footer ul li:first-child {
+        border: 0; }
+  footer p {
+    font-size: 87%;
+    margin-top: 20px; }
+
+@media screen and (max-width: 768px) {
+  footer ul li {
+    padding: 0 10px; } }
+@media screen and (max-width: 480px) {
+  footer ul {
+    flex-direction: column;
+    align-items: center; }
+    footer ul li {
+      margin-bottom: 10px;
+      border: 0; } }
+@media screen and (max-width: 1024px) {
+  .col-md-1 {
+    width: 8.332%; }
+
+  .col-md-2 {
+    width: 16.662%; }
+
+  .col-md-3 {
+    width: 25%; }
+
+  .col-md-4 {
+    width: 33.332%; }
+
+  .col-md-5 {
+    width: 41.662%; }
+
+  .col-md-6 {
+    width: 50%; }
+
+  .col-md-7 {
+    width: 58.331%; }
+
+  .col-md-8 {
+    width: 66.662%; }
+
+  .col-md-9 {
+    width: 75%; }
+
+  .col-md-10 {
+    width: 83.332%; }
+
+  .col-md-11 {
+    width: 91.662%; }
+
+  .col-md-12 {
+    width: 100%; } }
+@media screen and (max-width: 768px) {
+  .col-sm-1 {
+    width: 8.332%; }
+
+  .col-sm-2 {
+    width: 16.662%; }
+
+  .col-sm-3 {
+    width: 25%; }
+
+  .col-sm-4 {
+    width: 33.332%; }
+
+  .col-sm-5 {
+    width: 41.662%; }
+
+  .col-sm-6 {
+    width: 50%; }
+
+  .col-sm-7 {
+    width: 58.331%; }
+
+  .col-sm-8 {
+    width: 66.662%; }
+
+  .col-sm-9 {
+    width: 75%; }
+
+  .col-sm-10 {
+    width: 83.332%; }
+
+  .col-sm-11 {
+    width: 91.662%; }
+
+  .col-sm-12 {
+    width: 100%; } }
 @media screen and (max-width: 480px) {
   .col-xs-1 {
     width: 8.332%; }
@@ -93,32 +234,6 @@ nav {
     width: 91.662%; }
 
   .col-xs-12 {
-    width: 100%; }
-
-  .issues ul {
-    padding: 0 10px; }
-    .issues ul li {
-      flex-direction: column; } }
-/* Footer Settings */
-footer {
-  background-color: #e0caad;
-  background-image: url(../img/footer.jpg);
-  background-position: left center;
-  padding: 40px 0; }
-  footer ul {
-    margin: auto;
-    display: flex;
-    justify-content: center; }
-    footer ul li {
-      font-size: 87%;
-      padding: 0 20px;
-      border-left: 1px solid #313b4f; }
-      footer ul li:first-child {
-        border: 0; }
-  footer p {
-    width: 156px;
-    margin: auto;
-    font-size: 87%;
-    margin-top: 20px; }
+    width: 100%; } }
 
 /*# sourceMappingURL=issue.css.map */
