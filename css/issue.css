@@ -30,9 +30,6 @@ nav {
   margin-left: auto;
   margin-right: auto; }
 
-@media screen and (max-width: 480px) {
-  .container {
-    width: 100%; } }
 #issue-title {
   color: #e0e0e0; }
 
@@ -95,16 +92,30 @@ nav {
   .col-xs-12 {
     width: 100%; }
 
-  .issues ul {
-    padding: 0 10px; }
-    .issues ul li {
-      flex-direction: column; } }
+  .container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center; }
+
+  #green-bar {
+    width: 80%; }
+
+  .issues {
+    width: 100%; }
+    .issues ul {
+      padding: 0 10px; }
+      .issues ul li {
+        flex-direction: column; } }
 /* Footer Settings */
 footer {
   background-color: #e0caad;
   background-image: url(../img/footer.jpg);
   background-position: left center;
-  padding: 40px 0; }
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
   footer ul {
     margin: auto;
     display: flex;
@@ -116,9 +127,15 @@ footer {
       footer ul li:first-child {
         border: 0; }
   footer p {
-    width: 156px;
-    margin: auto;
     font-size: 87%;
     margin-top: 20px; }
+
+@media screen and (max-width: 480px) {
+  footer ul {
+    flex-direction: column;
+    align-items: center; }
+    footer ul li {
+      margin-bottom: 10px;
+      border: 0; } }
 
 /*# sourceMappingURL=issue.css.map */
