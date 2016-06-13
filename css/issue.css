@@ -87,8 +87,8 @@ nav {
     flex-direction: column;
     align-items: center; }
 
-  #green-bar {
-    width: 80%; }
+  .issue-image {
+    height: 200px; }
 
   .issues {
     width: 100%; }
@@ -125,7 +125,7 @@ footer {
     flex-direction: column;
     align-items: center; }
     footer ul li {
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       border: 0; } }
 @media screen and (max-width: 1024px) {
   .col-md-1 {
