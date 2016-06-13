@@ -10,9 +10,19 @@ $title = $row['title'];
 $datetime = $row['release_datetime'];
 $source = $row['source'];
 $views = $row['views'];
-$image_path = $row['image_path'];
 $content = $row['content'];
 
+// 看是不是最新一篇
+$sql_latesetId = "SELECT `id` FROM `issue` ORDER BY `id` DESC LIMIT 1";
+$row = $conn->query($sql_latesetId)->fetch_assoc();
+$latesetId = $row["id"];
+$islatest = ($issue_id == $latesetId)?true:false;
+
+// 找出內文中的第一個圖片
+preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $content, $matches);
+$first_image = (isset($matches[1]))?$matches[1]:"../../img/transparent.png";
+
+// 計算文章瀏覽次數
 $sql_currentViews = "SELECT `views` FROM `issue` WHERE `id` = $issue_id";
 $row_views = $conn->query($sql_currentViews)->fetch_assoc();
 $count = $row_views["views"]+1;
@@ -30,6 +40,28 @@ while($row_popular = $result_popular->fetch_assoc()){
   array_push($popularTitleList,$row_popular['title']);
 }
 
+if($issue_id != 1){
+  $prev = $issue_id-1;
+  $sql_prev = "SELECT title,source,content FROM issue WHERE id='$prev'";
+  $row_prev = $conn->query($sql_prev)->fetch_assoc();
+  $prev_title = $row_prev['title'];
+  $prev_source = $row_prev['source'];
+  $prev_content = $row_prev['content'];
+  preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $prev_content, $prev_matches);
+  $prev_image = (isset($prev_matches[1]))?$prev_matches[1]:"";
+}
+
+if(!$islatest){
+  $next = $issue_id+1;
+  $sql_next = "SELECT title,source,content FROM issue WHERE id='$next'";
+  $row_next = $conn->query($sql_next)->fetch_assoc();
+  $next_title = $row_next['title'];
+  $next_source = $row_next['source'];
+  $next_content = $row_next['content'];
+  preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $next_content, $next_matches);
+  $next_image = (isset($next_matches[1]))?$next_matches[1]:"";
+}
+
 ?>
 
 
@@ -41,7 +73,6 @@ while($row_popular = $result_popular->fetch_assoc()){
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/issue_article.css" />
-  <script src="http://www.w3schools.com/lib/w3data.js"></script>
 </head>
 
 <body>
@@ -59,26 +90,35 @@ while($row_popular = $result_popular->fetch_assoc()){
             <h1><?php echo $title; ?></h1>
             <div class="article-info clear">
               <p><i class="material-icons">schedule</i>  <?php echo $datetime; ?>，<?php echo $source; ?></p>
-              <p class="pull-right"><i class="material-icons">visibility</i>  <?php echo $views; ?></p>
+              <p class="pull-right">這裡放分享連結</p>
             </div>
           </div>
-          <img src="<?php echo $image_path; ?>" alt="<?php echo $title; ?>">
+          <img src="<?php echo $first_image; ?>" alt="<?php echo $title; ?>">
           <article>
             <?php echo $content; ?>
           </article>
           <div class="other_news">
             <div class="container clear">
-              <div class="prev-news">
-                <p>上一篇報導</p>
-                <div class="image"></div>
-                <h4>微塑膠成為幼魚「新食物」</h4>
+              <div class="prev-news <?php echo ($issue_id == 1)?"hide":""; ?>">
+                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>"><p>上一篇報導</p></a>
+                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>">
+                  <div class="image" style="background-image: url(<?php echo $prev_image; ?>)"></div>
+                </a>
+                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>">
+                  <h4><?php echo $prev_title; ?></h4>
+                </a>
+                <p><?php echo $prev_source; ?></p>
               </div>
-              <div class="next-news pull-right">
-                <p>下一篇報導</p>
-                <div class="image"></div>
-                <h4>幼魚肚裡滿滿柔珠研究證實影響成長</h4>
+              <div class="next-news pull-right <?php echo ($islatest)?"hide":""; ?>">
+                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>"><p>下一篇報導</p></a>
+                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>">
+                  <div class="image" style="background-image: url(<?php echo $next_image; ?>)"></div>
+                </a>
+                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>">
+                  <h4><?php echo $next_title; ?></h4>
+                </a>
+                <p><?php echo $next_source; ?></p>
               </div>
-              <div class="next-news"></div>
             </div>
           </div>
         </div>
@@ -87,7 +127,7 @@ while($row_popular = $result_popular->fetch_assoc()){
           <ul>
             <?php
             for($i=0; $i<sizeof($popularIdList); $i++){
-              echo '<li><a href="issue_article.php?id='.$popularIdList[$i].'">'.$popularTitleList[$i].'</a></li>';
+              echo '<li><a href="article.php?id='.$popularIdList[$i].'">'.$popularTitleList[$i].'</a></li>';
             }
             ?>
           </ul>
@@ -107,7 +147,6 @@ while($row_popular = $result_popular->fetch_assoc()){
   </footer>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script>w3IncludeHTML();</script>
   <script>
     $(function(){
       var animaion = setInterval(update, 5);

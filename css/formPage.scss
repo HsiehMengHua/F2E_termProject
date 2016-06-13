@@ -23,7 +23,7 @@ main{
   
   .form{
     width: 70%;
-    padding: 150px 0 60px 0;
+    padding: 150px 30px 60px 30px;
     margin-left: 30%;
     
     ul{
@@ -51,6 +51,11 @@ main{
         &:focus{
           border-bottom: 2px solid #55bbb5;
         }
+      }
+      
+      textarea{
+        width: 100%;
+        margin-top: 10px;
       }
       
       button.cancel{

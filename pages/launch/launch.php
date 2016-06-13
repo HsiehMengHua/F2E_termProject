@@ -2,12 +2,11 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>launch</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="../../css/bootstrap-material-datetimepicker.css" />
+  <link rel="stylesheet" href="../../css/bootstrap-material-datetimepicker.css">
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/formPage.css" />
-  <script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script><!-- See → http://cdn.ckeditor.com/ -->
 </head>
 <body>
   <nav class="clear">
@@ -15,13 +14,14 @@
     <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
   </nav>
   <main class="clear">
-    <div class="main-image" style="background-image: url(../../img/image_achievement.jpg)"></div>
+    <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
     <div class="form">
-      <form action="posting.php" method="post">
+      <form action="launching.php" method="post">
         <ul>
-          <li><label>哪個海灘？<input type="text" name="location"></label></li>
-          <li><label>哪一天？<input type="text" name="date" id="date"></label></li>
-          <li><br><textarea name="editor"></textarea><script>CKEDITOR.replace( 'editor' );</script></li>
+          <li><label>哪個海灘？</label><br><input type="text" name="location"></li>
+          <li><label>日期</label><br><input type="text" name="date" id="date"></li>
+          <li><label>時間 </label><br><input type="text" name="time" id="time"></li>
+          <li><label>要提醒大家什麼？ </label><br><textarea name="description" cols="30" rows="10"></textarea></li>
           <li class="clear">
             <button type="submit" class="submit">送出</button>
             <button onclick="history.back();" class="cancel">取消</button>
@@ -49,6 +49,20 @@
       $('form input').on("blur",function(){
         $(this).parent().css("color","#313b4f");
         $(this).css("borderBottomColor","#313b4f");
+      });
+      
+      $('#confirmPassword').keyup(function(){
+        if($(this).val() == $('#password').val()){
+          $(this).css("borderBottomColor","#75da7a");
+          $(this).parent().css("color","#75da7a");
+          $("#passErr").html("");
+          $("button.submit").attr("disabled",false);
+        }else{
+          $(this).css("borderBottomColor","#e53a3a");
+          $(this).parent().css("color","#e53a3a");
+          $("#passErr").html("　輸入密碼不一致");
+          $("button.submit").attr("disabled",true);
+        }
       });
     });
   </script>

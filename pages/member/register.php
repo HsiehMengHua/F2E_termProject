@@ -65,7 +65,7 @@ function input($data) {
     <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
   </nav>
   <main class="clear">
-    <div class="main-image" style="background-image: url(../../img/image_register.jpg)"></div>
+    <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
     <div class="form">
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <ul>

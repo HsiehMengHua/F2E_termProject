@@ -21,14 +21,17 @@ main > .container {
       main > .container .main-content .heading .article-info .material-icons {
         font-size: 1em; }
     main > .container .main-content img {
-      background-color: lightgray;
       width: 100%; }
     main > .container .main-content article {
       padding-top: 65px;
       margin-bottom: 120px; }
-      main > .container .main-content article h2 {
+      main > .container .main-content article h1, main > .container .main-content article h2, main > .container .main-content article h3, main > .container .main-content article h4, main > .container .main-content article h5, main > .container .main-content article h6 {
         line-height: 4em;
         font-weight: 500; }
+      main > .container .main-content article p {
+        margin-bottom: 20px; }
+      main > .container .main-content article a {
+        color: #53ce59; }
   main > .container .sidebar {
     width: 30%;
     background-color: rgba(143, 213, 195, 0.25);
@@ -44,12 +47,16 @@ main > .container {
     background-color: #e5e5e5; }
     main > .container .other_news .container .prev-news, main > .container .other_news .container .next-news {
       width: 270px; }
+      main > .container .other_news .container .prev-news.hide, main > .container .other_news .container .next-news.hide {
+        display: none; }
     main > .container .other_news .container p {
       font-size: 0.88em;
       color: #9b9b9b; }
     main > .container .other_news .container .image {
       height: 152px;
       background-color: lightgray;
+      background-size: cover;
+      background-position: center center;
       margin: 25px 0; }
 
 footer {

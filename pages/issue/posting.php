@@ -18,7 +18,7 @@ if($conn->query($sql_insert)){
   $row = $conn->query($sql_retrieveId)->fetch_assoc();
   $issue_id = $row["id"];
 
-      // 上傳主圖
+      /* // 上傳主圖
       mkdir("../../file_upload/issue/image/$issue_id/");
       $target_image_dir = "../../file_upload/issue/image/$issue_id/";
 
@@ -66,7 +66,7 @@ if($conn->query($sql_insert)){
         } else {
             echo "圖片上傳失敗";
         }
-      }
+      }*/
 
   // Redirect
   $host  = $_SERVER['HTTP_HOST'];

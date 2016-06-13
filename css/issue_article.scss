@@ -31,7 +31,6 @@ main>.container{
     }
 
     img{
-      background-color: lightgray;
       width: 100%;
     }
 
@@ -39,9 +38,17 @@ main>.container{
       padding-top: 65px;
       margin-bottom: 120px;
 
-      h2{
+      h1,h2,h3,h4,h5,h6{
         line-height: 4em;
         font-weight: 500;
+      }
+      
+      p{
+        margin-bottom: 20px;
+      }
+      
+      a{
+        color: #53ce59;
       }
     }
   }
@@ -69,6 +76,10 @@ main>.container{
 
       .prev-news, .next-news{
         width: 270px;
+        
+        &.hide{
+          display: none;
+        }
       }
 
       p{
@@ -79,6 +90,8 @@ main>.container{
       .image{
         height: 152px;
         background-color: lightgray;
+        background-size: cover;
+        background-position: center center;
         margin: 25px 0;
       }
     }

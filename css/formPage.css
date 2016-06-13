@@ -19,7 +19,7 @@ main {
     z-index: -99; }
   main .form {
     width: 70%;
-    padding: 150px 0 60px 0;
+    padding: 150px 30px 60px 30px;
     margin-left: 30%; }
     main .form ul {
       max-width: 500px;
@@ -39,6 +39,9 @@ main {
         background-color: transparent; }
         main .form ul input:focus {
           border-bottom: 2px solid #55bbb5; }
+      main .form ul textarea {
+        width: 100%;
+        margin-top: 10px; }
       main .form ul button.cancel, main .form ul button.submit {
         float: right;
         padding: 6px 25px;
