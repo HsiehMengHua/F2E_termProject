@@ -12,8 +12,8 @@ main {
     width: 30%;
     height: 100%;
     background-color: #5c90ac;
-    background-image: url(../img/image_register.jpg);
     background-position: 43% 50%;
+    background-size: cover;
     position: fixed;
     top: 0;
     z-index: -99; }
@@ -26,12 +26,17 @@ main {
       margin: auto; }
       main .form ul li {
         margin-bottom: 30px; }
+        main .form ul li #err {
+          font-size: 0.75em;
+          color: #e53a3a;
+          float: right; }
       main .form ul input {
         width: 100%;
         padding: 10px 0;
         border: 0;
         border-bottom: 1px solid #313b4f;
-        outline: none; }
+        outline: none;
+        background-color: transparent; }
         main .form ul input:focus {
           border-bottom: 2px solid #55bbb5; }
       main .form ul button.cancel, main .form ul button.submit {

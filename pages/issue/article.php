@@ -9,9 +9,9 @@ $issue_id = $row['id'];
 $title = $row['title'];
 $datetime = $row['release_datetime'];
 $source = $row['source'];
-$image_path = $row['image_path'];
-$html_path = $row['html_path'];
 $views = $row['views'];
+$image_path = $row['image_path'];
+$content = $row['content'];
 
 $sql_currentViews = "SELECT `views` FROM `issue` WHERE `id` = $issue_id";
 $row_views = $conn->query($sql_currentViews)->fetch_assoc();
@@ -64,7 +64,7 @@ while($row_popular = $result_popular->fetch_assoc()){
           </div>
           <img src="<?php echo $image_path; ?>" alt="<?php echo $title; ?>">
           <article>
-            <div w3-include-html="<?php echo $html_path; ?>"></div>
+            <?php echo $content; ?>
           </article>
           <div class="other_news">
             <div class="container clear">

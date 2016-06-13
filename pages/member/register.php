@@ -3,21 +3,24 @@
 session_start();
 include("../connectDB.php");
 
-$email = input($_POST["email"]);
-$password = input($_POST["password"]);
-$userName = input($_POST["userName"]);
-$phone = input($_POST["phone"]);
+$err = "";
+$email = (isset($_POST["email"]))?input($_POST["email"]):"";
+$password = (isset($_POST["password"]))?input($_POST["password"]):"";
+$userName = (isset($_POST["userName"]))?input($_POST["userName"]):"";
+$phone = (isset($_POST["phone"]))?input($_POST["phone"]):"";
+date_default_timezone_set("Asia/Taipei");
+$datetime = date("Y-m-d H:i:s");
 
 if(empty($email) || empty($password) || empty($userName) || empty($phone)){
-  echo "輸入資料不完整";
+  $err = (empty($email) && empty($password) && empty($userName) && empty($phone))?"":"輸入資料不完整";
 }else{
   $sql = "SELECT * FROM `member` WHERE `email` = '$email'";
   $result = $conn->query($sql);
   
   if($result->num_rows){
-    echo "Email已被註冊過";
+    $err = "Email已被註冊過";
   }else{
-    $sql_insert = "INSERT INTO `member` VALUES (NULL, '$email', '$password', '$userName', '$phone')";
+    $sql_insert = "INSERT INTO `member` VALUES (NULL, '$email', '$password', '$userName', '$phone', '$datetime')";
     if($conn->query($sql_insert)){
 
       //id寫入SESSION
@@ -26,15 +29,14 @@ if(empty($email) || empty($password) || empty($userName) || empty($phone)){
       $id = $row["id"];
       $_SESSION["member_id"] = $id;
 
-      /* Redirect to homepage
+      // Redirect to homepage
       $host  = $_SERVER['HTTP_HOST'];
       $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
       $extra = '../../index.html';
       header("Location: http://$host$uri/$extra");
-      exit();*/
-      echo "註冊成功";
+      exit();
     }else{
-      echo "Error: ".$conn->error;
+      $err = "Error: ".$conn->error;
     }
   }
 }
@@ -47,7 +49,6 @@ function input($data) {
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="zh">
@@ -64,7 +65,7 @@ function input($data) {
     <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
   </nav>
   <main class="clear">
-    <div class="main-image"></div>
+    <div class="main-image" style="background-image: url(../../img/image_register.jpg)"></div>
     <div class="form">
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <ul>
@@ -81,9 +82,10 @@ function input($data) {
           </li>
           <li><label>姓名<input type="text" name="userName"></label></li>
           <li><label>聯絡電話<input type="text" name="phone"></label></li>
-          <li>
+          <li class="clear">
             <button type="submit" class="submit">送出</button>
-            <button onclick="history.back()" class="cancel">取消</button>
+            <button onclick="history.back();" class="cancel">取消</button>
+            <span id="err"><?php echo $err."　"; ?></span>
           </li>
         </ul>
       </form>

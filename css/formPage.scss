@@ -14,8 +14,8 @@ main{
     width: 30%;
     height: 100%;
     background-color: #5c90ac;
-    background-image: url(../img/image_register.jpg);
     background-position: 43% 50%;
+    background-size: cover;
     position: fixed;
     top: 0;
     z-index: -99;
@@ -32,6 +32,12 @@ main{
       
       li{
         margin-bottom: 30px;
+        
+        #err{
+          font-size: 0.75em;
+          color: #e53a3a;
+          float: right;
+        }
       }
 
       input{
@@ -40,6 +46,7 @@ main{
         border: 0;
         border-bottom: 1px solid #313b4f;
         outline: none;
+        background-color: transparent;
         
         &:focus{
           border-bottom: 2px solid #55bbb5;

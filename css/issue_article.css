@@ -56,7 +56,10 @@ footer {
   background-color: #e0caad;
   background-image: url(../img/footer.jpg);
   background-position: left center;
-  padding: 40px 0; }
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
   footer ul {
     margin: auto;
     display: flex;
@@ -68,9 +71,18 @@ footer {
       footer ul li:first-child {
         border: 0; }
   footer p {
-    width: 156px;
-    margin: auto;
     font-size: 87%;
     margin-top: 20px; }
+
+@media screen and (max-width: 768px) {
+  footer ul li {
+    padding: 0 10px; } }
+@media screen and (max-width: 480px) {
+  footer ul {
+    flex-direction: column;
+    align-items: center; }
+    footer ul li {
+      margin-bottom: 20px;
+      border: 0; } }
 
 /*# sourceMappingURL=issue_article.css.map */
