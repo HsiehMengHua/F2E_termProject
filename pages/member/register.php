@@ -1,3 +1,54 @@
+<?php
+
+session_start();
+include("../connectDB.php");
+
+$email = input($_POST["email"]);
+$password = input($_POST["password"]);
+$userName = input($_POST["userName"]);
+$phone = input($_POST["phone"]);
+
+if(empty($email) || empty($password) || empty($userName) || empty($phone)){
+  echo "輸入資料不完整";
+}else{
+  $sql = "SELECT * FROM `member` WHERE `email` = '$email'";
+  $result = $conn->query($sql);
+  
+  if($result->num_rows){
+    echo "Email已被註冊過";
+  }else{
+    $sql_insert = "INSERT INTO `member` VALUES (NULL, '$email', '$password', '$userName', '$phone')";
+    if($conn->query($sql_insert)){
+
+      //id寫入SESSION
+      $sql_retrieveId = "SELECT `id` FROM `member` WHERE `email` = '$email'";
+      $row = $conn->query($sql_retrieveId)->fetch_assoc();
+      $id = $row["id"];
+      $_SESSION["member_id"] = $id;
+
+      /* Redirect to homepage
+      $host  = $_SERVER['HTTP_HOST'];
+      $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+      $extra = '../../index.html';
+      header("Location: http://$host$uri/$extra");
+      exit();*/
+      echo "註冊成功";
+    }else{
+      echo "Error: ".$conn->error;
+    }
+  }
+}
+
+function input($data) {
+  $data = trim($data);
+  $data = stripslashes($data);
+  $data = htmlspecialchars($data);
+  return $data;
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -15,7 +66,7 @@
   <main class="clear">
     <div class="main-image"></div>
     <div class="form">
-      <form action="registering.php" method="post">
+      <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <ul>
           <li>
             <label>Email<span id="emailErr" style="font-size:0.75em;"></span>
@@ -23,10 +74,17 @@
             </label>
           </li>
           <li><label>密碼<input type="password" name="password" id="password"></label></li>
-          <li><label>確認密碼<input type="password" id="confirmPassword"></label></li>
+          <li>
+            <label>確認密碼<span id="passErr" style="font-size:0.75em;"></span>
+              <input type="password" id="confirmPassword">
+            </label>
+          </li>
           <li><label>姓名<input type="text" name="userName"></label></li>
           <li><label>聯絡電話<input type="text" name="phone"></label></li>
-          <li><button type="submit" class="submit">送出</button><button onclick="history.back()" class="cancel">取消</button></li>
+          <li>
+            <button type="submit" class="submit">送出</button>
+            <button onclick="history.back()" class="cancel">取消</button>
+          </li>
         </ul>
       </form>
     </div>
@@ -48,9 +106,13 @@
         if($(this).val() == $('#password').val()){
           $(this).css("borderBottomColor","#75da7a");
           $(this).parent().css("color","#75da7a");
+          $("#passErr").html("");
+          $("button.submit").attr("disabled",false);
         }else{
           $(this).css("borderBottomColor","#e53a3a");
           $(this).parent().css("color","#e53a3a");
+          $("#passErr").html("　輸入密碼不一致");
+          $("button.submit").attr("disabled",true);
         }
       });
     });

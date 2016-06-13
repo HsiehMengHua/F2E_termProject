@@ -7,9 +7,9 @@ $sql = "SELECT * FROM `member` WHERE `email` = '$email'";
 $result = $conn->query($sql);
 
 if($result->num_rows){
-  echo "true";
+  echo $emailDup = "true";
 }else{
-  echo "false";
+  echo $emailDup = "false";
 }
 
 ?>
