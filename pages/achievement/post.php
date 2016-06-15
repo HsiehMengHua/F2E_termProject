@@ -34,7 +34,7 @@ if(!isset($_SESSION["member_id"]))
         <ul>
           <li><label>哪個海灘？<input type="text" name="location"></label></li>
           <li><label>哪一天？<input type="text" name="date" id="date"></label></li>
-          <li><br><textarea name="editor"></textarea><script>CKEDITOR.replace( 'editor' );</script></li>
+          <li class="editor"><br><textarea name="editor"></textarea><script>CKEDITOR.replace( 'editor' );</script></li>
           <li class="clear">
             <button type="submit" class="submit">送出</button>
             <button onclick="history.back();" class="cancel">取消</button>
