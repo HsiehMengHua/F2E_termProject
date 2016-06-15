@@ -84,12 +84,17 @@ if($result_next->num_rows){
 <body>
 
   <nav class="clear">
-    <div><i class="material-icons">menu</i></div>
-    <div><img src="../../img/logo.png" alt=""></div>
-    <div class="pull-right">
-      <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
-       /
-      <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
+    <div class="nav-container">
+
+      <div id="nav-left">
+        <div><i class="material-icons">menu</i></div>
+      </div>
+
+      <div id="nav-right">
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
+         /
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
+      </div>
     </div>
   </nav>
 

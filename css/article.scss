@@ -1,5 +1,8 @@
 body{position: relative;}
 
+/* Nav Settings*/
+@import "nav";
+
 nav{
   color: white;
   background-color: #313131;
@@ -47,11 +50,11 @@ main>.container{
         line-height: 4em;
         font-weight: 500;
       }
-      
+
       p{
         margin-bottom: 20px;
       }
-      
+
       a{
         color: #53ce59;
       }
@@ -81,7 +84,7 @@ main>.container{
 
       .prev-news, .next-news{
         width: 270px;
-        
+
         p{
           margin-top: 10px;
         }
