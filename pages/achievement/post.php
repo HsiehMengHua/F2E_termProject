@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-if(!isset($_SESSION["member_id"]) || $_SESSION["member_id"] != 1)
+if(!isset($_SESSION["member_id"]))
   echo '<script>alert("登入先唷");window.location.href="../member/login.php";</script>';
 
 ?>
