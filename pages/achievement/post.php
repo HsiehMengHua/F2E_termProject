@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+if(!isset($_SESSION["member_id"]))
+  echo '<script>alert("登入先唷");window.location.href="../member/login.php";</script>';
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -12,7 +21,11 @@
 <body>
   <nav class="clear">
     <div><a href=""><i class="material-icons">menu</i></a></div>
-    <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
+    <div class="pull-right">
+      <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
+       / 
+      <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
+    </div>
   </nav>
   <main class="clear">
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
@@ -36,7 +49,7 @@
   <script src="../../js/bootstrap-material-datetimepicker.js"></script>
   <script>
 	  $(function() {
-        $('#date').bootstrapMaterialDatePicker({ weekStart: 0, time: false, minDate: new Date() });
+        $('#date').bootstrapMaterialDatePicker({ weekStart: 0, time: false, maxDate: new Date() });
         $('#time').bootstrapMaterialDatePicker({ date: false, format: 'HH:mm', switchOnClick: true });
 	  });
   </script>

@@ -69,16 +69,16 @@ main>.container{
     }
   }
 
-  .other_news{
+  .other{
     .container{
-      padding: 25px 40px;
+      padding: 30px 40px;
       background-color: #e5e5e5;
 
       .prev-news, .next-news{
         width: 270px;
         
-        &.hide{
-          display: none;
+        p{
+          margin-top: 10px;
         }
       }
 

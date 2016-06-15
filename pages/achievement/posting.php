@@ -17,7 +17,7 @@ if($conn->query($sql_insert)){
   $sql_retrieveId = "SELECT `id` FROM `achievement` ORDER BY `id` DESC LIMIT 1";
   $row = $conn->query($sql_retrieveId)->fetch_assoc();
   $ach_id = $row["id"];
-  
+
   // Redirect
   $host  = $_SERVER['HTTP_HOST'];
   $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');

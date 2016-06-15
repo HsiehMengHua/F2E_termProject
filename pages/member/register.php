@@ -3,13 +3,24 @@
 session_start();
 include("../connectDB.php");
 
+if(isset($_SESSION["member_id"])){
+  echo '<script>
+  if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
+    window.location.href="../member/logout.php";
+  }else{
+    history.back();
+  }
+  </script>';
+}
+
 $err = "";
 $email = (isset($_POST["email"]))?input($_POST["email"]):"";
-$password = (isset($_POST["password"]))?input($_POST["password"]):"";
+$password = (isset($_POST["password"]))?md5(input($_POST["password"])):"";
 $userName = (isset($_POST["userName"]))?input($_POST["userName"]):"";
 $phone = (isset($_POST["phone"]))?input($_POST["phone"]):"";
 date_default_timezone_set("Asia/Taipei");
 $datetime = date("Y-m-d H:i:s");
+$act_code = md5($email.$password.$datetime);
 
 if(empty($email) || empty($password) || empty($userName) || empty($phone)){
   $err = (empty($email) && empty($password) && empty($userName) && empty($phone))?"":"輸入資料不完整";
@@ -20,10 +31,32 @@ if(empty($email) || empty($password) || empty($userName) || empty($phone)){
   if($result->num_rows){
     $err = "Email已被註冊過";
   }else{
-    $sql_insert = "INSERT INTO `member` VALUES (NULL, '$email', '$password', '$userName', '$phone', '$datetime')";
+    $sql_insert = "INSERT INTO `member` (`id`, `email`, `password`, `name`, `phone`, `register_datetime`, `activated`, `activate_code`) VALUES (NULL, '$email', '$password', '$userName', '$phone', '$datetime', '0', '$act_code')";
     if($conn->query($sql_insert)){
-
+      
       //id寫入SESSION
+      $sql_retrieveId = "SELECT `id` FROM `member` WHERE `email` = '$email'";
+      $row = $conn->query($sql_retrieveId)->fetch_assoc();
+      $id = $row["id"];
+      $_SESSION["member_id"] = $id;
+      
+      $header = "Content-type:text/html;charset=UTF-8";
+      $header .= "\nFrom: mailnotice3@gmail.com";
+      $host  = $_SERVER['HTTP_HOST'];
+      $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
+      $extra = "activate.php?code=$act_code";
+      $act_link = "http://$host$uri/$extra";
+      $text = '
+      <p>你已註冊成為會員，請點擊以下連結驗證你的電子信箱：</p>
+      <a href="'.$act_link.'">'.$act_link.'</a>';
+      
+      if(mail($email,"會員帳號啟用信",$text,$header)){
+        header("Location: act_sent.php");
+      }else{
+        echo "Somthing wrong. Email was not sent.";
+      }
+
+      /*id寫入SESSION
       $sql_retrieveId = "SELECT `id` FROM `member` WHERE `email` = '$email'";
       $row = $conn->query($sql_retrieveId)->fetch_assoc();
       $id = $row["id"];
@@ -34,7 +67,7 @@ if(empty($email) || empty($password) || empty($userName) || empty($phone)){
       $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
       $extra = '../../index.html';
       header("Location: http://$host$uri/$extra");
-      exit();
+      exit();*/
     }else{
       $err = "Error: ".$conn->error;
     }
@@ -61,8 +94,12 @@ function input($data) {
 </head>
 <body>
   <nav class="clear">
-    <div><a href=""><i class="material-icons">menu</i></a></div>
-    <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
+    <div><i class="material-icons">menu</i></div>
+    <div class="pull-right">
+      <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
+       / 
+      <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
+    </div>
   </nav>
   <main class="clear">
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
@@ -70,18 +107,18 @@ function input($data) {
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <ul>
           <li>
-            <label>Email<span id="emailErr" style="font-size:0.75em;"></span>
-              <input type="email" name="email" id="email" placeholder="email@email.com" onkeyup="checkEmail(this.value)">
+            <label>Email<span id="emailErr"></span>
+              <input type="email" name="email" id="email" value="<?php echo $email; ?>" onkeyup="checkEmail(this.value)">
             </label>
           </li>
           <li><label>密碼<input type="password" name="password" id="password"></label></li>
           <li>
-            <label>確認密碼<span id="passErr" style="font-size:0.75em;"></span>
+            <label>確認密碼<span id="passErr"></span>
               <input type="password" id="confirmPassword">
             </label>
           </li>
-          <li><label>姓名<input type="text" name="userName"></label></li>
-          <li><label>聯絡電話<input type="text" name="phone"></label></li>
+          <li><label>姓名<input type="text" name="userName" value="<?php echo $userName; ?>"></label></li>
+          <li><label>聯絡電話<input type="text" name="phone" value="<?php echo $phone; ?>"></label></li>
           <li class="clear">
             <button type="submit" class="submit">送出</button>
             <button onclick="history.back();" class="cancel">取消</button>

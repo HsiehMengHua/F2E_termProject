@@ -3,9 +3,19 @@
 session_start();
 include("../connectDB.php");
 
+if(isset($_SESSION["member_id"])){
+  echo '<script>
+  if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
+    window.location.href="../member/logout.php";
+  }else{
+    history.back();
+  }
+  </script>';
+}
+
 $err = "";
 $email = (isset($_POST["email"]))?input($_POST["email"]):"";
-$password = (isset($_POST["password"]))?input($_POST["password"]):"";
+$password = (isset($_POST["password"]))?md5(input($_POST["password"])):"";
 
 $sql = "SELECT id,email,password FROM `member` WHERE `email` = '$email' AND `password` = '$password'";
 $result = $conn->query($sql);
@@ -48,14 +58,18 @@ function input($data) {
 <body>
   <nav class="clear">
     <div><a href=""><i class="material-icons">menu</i></a></div>
-    <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
+    <div class="pull-right">
+      <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
+       / 
+      <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
+    </div>
   </nav>
   <main class="clear">
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
     <div class="form">
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <ul>
-          <li><label>Email<input type="email" name="email"></label></li>
+          <li><label>Email<input type="email" name="email" value="<?php echo (isset($_POST["email"]))?$_POST["email"]:""; ?>"></label></li>
           <li><label>密碼<input type="password" name="password"></label></li>
           <li class="clear">
             <button type="submit" class="submit">送出</button>
