@@ -60,7 +60,7 @@ function input($data) {
     <div><a href=""><i class="material-icons">menu</i></a></div>
     <div class="pull-right">
       <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
-       / 
+       
       <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
     </div>
   </nav>
