@@ -3,8 +3,7 @@
 session_start();
 include("../connectDB.php");
 
-if($_SESSION["member_id"] != 1){
-  if(isset($_SESSION["member_id"])){
+if(isset($_SESSION["member_id"]) && $_SESSION["member_id"] != 1){
     echo '<script>
     if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
       window.location.href="../member/logout.php";
@@ -12,7 +11,6 @@ if($_SESSION["member_id"] != 1){
       history.back();
     }
     </script>';
-  }
 }
 
 $err = "";

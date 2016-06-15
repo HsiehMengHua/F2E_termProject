@@ -37,7 +37,7 @@ if(!isset($_SESSION["member_id"]))
           <li><label>報導標題</label><br><input type="text" name="title"></li>
           <li><label>報導來源</label><br><input type="text" name="source"></li>
           <!--<li><label>上傳一張主圖</label><input type="file" name="imageUpload"></li>-->
-          <li><br><textarea name="editor"></textarea><script>CKEDITOR.replace( 'editor' );</script></li>
+          <li class="editor"><br><textarea name="editor"></textarea><script>CKEDITOR.replace( 'editor' );</script></li>
           <li class="clear">
             <button type="submit" class="submit">送出</button>
             <button onclick="history.back();" class="cancel">取消</button>

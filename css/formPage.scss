@@ -69,14 +69,18 @@ main{
         margin-bottom: 30px;
 
         @media (max-width: 768px){
-          &:first-child,&:nth-child(2){
-            padding: 0 50px;
+          padding: 0 50px;
+          
+          &.editor{
+            padding: 0;
           }
         }
 
         @media (max-width: 480px){
-          &:first-child,&:nth-child(2){
-            padding: 0 25px;
+          padding: 0 25px;
+          
+          &.editor{
+            padding: 0;
           }
         }
 

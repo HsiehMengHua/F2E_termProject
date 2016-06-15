@@ -54,11 +54,15 @@ main {
       main .form form li {
         margin-bottom: 30px; }
         @media (max-width: 768px) {
-          main .form form li:first-child, main .form form li:nth-child(2) {
-            padding: 0 50px; } }
+          main .form form li {
+            padding: 0 50px; }
+            main .form form li.editor {
+              padding: 0; } }
         @media (max-width: 480px) {
-          main .form form li:first-child, main .form form li:nth-child(2) {
-            padding: 0 25px; } }
+          main .form form li {
+            padding: 0 25px; }
+            main .form form li.editor {
+              padding: 0; } }
         main .form form li input {
           width: 100%;
           padding: 10px 0;

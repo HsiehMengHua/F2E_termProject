@@ -96,14 +96,13 @@ if($result_next->num_rows){
         <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
       </div>
     </div>
-
   </nav>
 
   <main>
     <div class="container">
       <div class="clear">
         <div class="main-content">
-
+         
           <div class="heading">
             <h1><?php echo $title; ?></h1>
             <div class="article-info clear">
@@ -118,13 +117,6 @@ if($result_next->num_rows){
             <?php echo $content; ?>
           </article>
 
-          <div class="other_news">
-            <div class="container clear">
-
-              <div class="prev-news <?php echo ($issue_id == 1)?"hide":""; ?>">
-                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>"><p>上一篇報導</p></a>
-                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>">
-
           <div class="other">
             <div class="container clear">
               <div class="prev-news <?php echo ($result_prev->num_rows)?"":"hide"; ?>">
@@ -137,11 +129,6 @@ if($result_next->num_rows){
                 </a>
                 <p><?php echo $prev_source; ?></p>
               </div>
-
-              <div class="next-news pull-right <?php echo ($islatest)?"hide":""; ?>">
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>"><p>下一篇報導</p></a>
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>">
-
               <div class="next-news pull-right <?php echo ($result_next->num_rows)?"":"hide"; ?>">
                 <a href="<?php echo "article.php?id=$next_id"; ?>"><p>下一篇報導</p></a>
                 <a href="<?php echo "article.php?id=$next_id"; ?>">
@@ -154,7 +141,6 @@ if($result_next->num_rows){
               </div>
             </div>
           </div>
-
         </div>
         <div class="sidebar pull-right">
           <h4>大家在關注的報導</h4>
@@ -182,14 +168,13 @@ if($result_next->num_rows){
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script>
-    $(function(){
       var animaion = setInterval(update, 5);
       function update(){
-        var y = $(this).scrollTop();
-        if(y>120)
-          $(".sidebar").css('top', y-120);
+        var y = document.querySelector("body").scrollTop-120;
+        if(y>0){
+          document.querySelector(".sidebar").style.top = y.toString()+"px";
+        }
       }
-    });
   </script>
 </body>
 </html>
