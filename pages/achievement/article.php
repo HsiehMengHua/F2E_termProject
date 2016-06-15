@@ -3,61 +3,58 @@
 session_start();
 include("../connectDB.php");
 
-$sql = "SELECT * FROM `issue` WHERE `id` = ".$_GET['id'];
+$sql = "SELECT * FROM `achievement` WHERE `id` = ".$_GET['id'];
 $row = $conn->query($sql)->fetch_assoc();
+$author_id = $row["author_id"];
+$sql_author = "SELECT name FROM member WHERE id = $author_id";
+$row_member = $conn->query($sql_author)->fetch_assoc();
+$author_name = $row_member['name'];
 
-$issue_id = $row['id'];
-$title = $row['title'];
-$datetime = $row['release_datetime'];
-$source = $row['source'];
-$views = $row['views'];
+$location = $row['location'];
+$act_date = $row['act_date'];
+$release = $row['release_datetime'];
 $content = $row['content'];
-
-// 看是不是最新一篇
-$sql_latesetId = "SELECT `id` FROM `issue` ORDER BY `id` DESC LIMIT 1";
-$row = $conn->query($sql_latesetId)->fetch_assoc();
-$latesetId = $row["id"];
-$islatest = ($issue_id == $latesetId)?true:false;
 
 // 找出內文中的第一個圖片
 preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $content, $matches);
 $first_image = (isset($matches[1]))?$matches[1]:"../../img/transparent.png";
 
-// 計算文章瀏覽次數
-$sql_currentViews = "SELECT `views` FROM `issue` WHERE `id` = $issue_id";
-$row_views = $conn->query($sql_currentViews)->fetch_assoc();
-$count = $row_views["views"]+1;
-$sql_countViews = "UPDATE `issue` SET `views` = '$count' WHERE `id` = $issue_id";
-$conn->query($sql_countViews);
-
 // 選60天內瀏覽次數最高的前7個報導，sidebar用
-$sql_popular = "SELECT `id`,`title` FROM `issue` WHERE `release_datetime` BETWEEN DATE_SUB(release_datetime,INTERVAL 60 DAY) AND NOW() ORDER BY `views` DESC LIMIT 7";
+$sql_popular = "SELECT `id`,`location`,`act_date` FROM `achievement` ORDER BY `release_datetime` DESC LIMIT 7";
 $result_popular = $conn->query($sql_popular);
 $popularIdList = [];
-$popularTitleList = [];
+$popularLocationList = [];
+$popularDateList = [];
 // 把多項結果存成陣列
 while($row_popular = $result_popular->fetch_assoc()){
   array_push($popularIdList,$row_popular['id']);
-  array_push($popularTitleList,$row_popular['title']);
+  array_push($popularLocationList,$row_popular['location']);
+  array_push($popularDateList,$row_popular['act_date']);
 }
 
-if($issue_id != 1){
-  $prev = $issue_id-1;
-  $sql_prev = "SELECT title,source,content FROM issue WHERE id='$prev'";
+// 看是不是最新一篇
+$sql_latesetId = "SELECT `id` FROM `achievement` ORDER BY `id` DESC LIMIT 1";
+$row = $conn->query($sql_latesetId)->fetch_assoc();
+$latesetId = $row["id"];
+$islatest = ($_GET['id'] == $latesetId)?true:false;
+
+if($_GET['id'] != 1){
+  $prev = $_GET['id']-1;
+  $sql_prev = "SELECT location,act_date,content FROM achievement WHERE id='$prev'";
   $row_prev = $conn->query($sql_prev)->fetch_assoc();
-  $prev_title = $row_prev['title'];
-  $prev_source = $row_prev['source'];
+  $prev_location = $row_prev['location'];
+  $prev_act_date = $row_prev['act_date'];
   $prev_content = $row_prev['content'];
   preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $prev_content, $prev_matches);
   $prev_image = (isset($prev_matches[1]))?$prev_matches[1]:"";
 }
 
 if(!$islatest){
-  $next = $issue_id+1;
-  $sql_next = "SELECT title,source,content FROM issue WHERE id='$next'";
+  $next = $_GET['id']+1;
+  $sql_next = "SELECT location,act_date,content FROM achievement WHERE id='$next'";
   $row_next = $conn->query($sql_next)->fetch_assoc();
-  $next_title = $row_next['title'];
-  $next_source = $row_next['source'];
+  $next_location = $row_next['location'];
+  $next_act_date = $row_next['act_date'];
   $next_content = $row_next['content'];
   preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $next_content, $next_matches);
   $next_image = (isset($next_matches[1]))?$next_matches[1]:"";
@@ -70,10 +67,15 @@ if(!$islatest){
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title><?php echo $title; ?></title>
+  <title><?php echo $location."，".$act_date; ?></title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css" />
   <link rel="stylesheet" href="../../css/article.css" />
+  <style>
+    .date{
+      float: right;
+    }
+  </style>
 </head>
 
 <body>
@@ -92,47 +94,49 @@ if(!$islatest){
       <div class="clear">
         <div class="main-content">
           <div class="heading">
-            <h1><?php echo $title; ?></h1>
+            <h1><?php echo $location."，".$act_date; ?></h1>
             <div class="article-info clear">
-              <p><i class="material-icons">schedule</i>  <?php echo $datetime; ?>，<?php echo $source; ?></p>
+              <p><i class="material-icons">schedule</i>  <?php echo $release; ?>，<?php echo $author_name; ?></p>
               <p class="pull-right">這裡放分享連結</p>
             </div>
           </div>
-          <img src="<?php echo $first_image; ?>" alt="<?php echo $title; ?>">
+          <img src="<?php echo $first_image; ?>" alt="<?php echo $location."，".$act_date; ?>">
           <article>
             <?php echo $content; ?>
           </article>
           <div class="other">
             <div class="container clear">
-              <div class="prev-news <?php echo ($issue_id == 1)?"hide":""; ?>">
-                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>"><p>上一篇報導</p></a>
-                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>">
+              <div class="prev-news <?php echo ($_GET['id'] == 1)?"hide":""; ?>">
+                <a href="<?php echo ($_GET['id'] == 1)?"":"article.php?id=".($_GET['id']-1); ?>"><p>上一篇文章</p></a>
+                <a href="<?php echo ($_GET['id'] == 1)?"":"article.php?id=".($_GET['id']-1); ?>">
                   <div class="image" style="background-image: url(<?php echo $prev_image; ?>)"></div>
                 </a>
-                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>">
-                  <h4><?php echo $prev_title; ?></h4>
+                <a href="<?php echo ($_GET['id'] == 1)?"":"article.php?id=".($_GET['id']-1); ?>" class="clear">
+                  <h4><?php echo $prev_location; ?></h4>
+                  <h4 class="date"><?php echo $prev_act_date; ?></h4>
                 </a>
-                <p><?php echo $prev_source; ?></p>
               </div>
               <div class="next-news pull-right <?php echo ($islatest)?"hide":""; ?>">
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>"><p>下一篇報導</p></a>
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>">
+                <a href="<?php echo ($islatest)?"":"article.php?id=".($_GET['id']+1); ?>"><p>下一篇文章</p></a>
+                <a href="<?php echo ($islatest)?"":"article.php?id=".($_GET['id']+1); ?>">
                   <div class="image" style="background-image: url(<?php echo $next_image; ?>)"></div>
                 </a>
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>">
-                  <h4><?php echo $next_title; ?></h4>
+                <a href="<?php echo ($islatest)?"":"article.php?id=".($_GET['id']+1); ?>">
+                  <h4><?php echo $next_location; ?></h4>
+                  <h4><?php echo $next_act_date; ?></h4>
                 </a>
-                <p><?php echo $next_source; ?></p>
               </div>
             </div>
           </div>
         </div>
         <div class="sidebar pull-right">
-          <h4>大家在關注的報導</h4>
+          <h4>最新的成果分享</h4>
           <ul>
             <?php
             for($i=0; $i<sizeof($popularIdList); $i++){
-              echo '<li><a href="article.php?id='.$popularIdList[$i].'">'.$popularTitleList[$i].'</a></li>';
+              echo '<li>
+              <a href="article.php?id='.$popularIdList[$i].'">'.$popularLocationList[$i].'，'.$popularDateList[$i].'</a>
+              </li>';
             }
             ?>
           </ul>

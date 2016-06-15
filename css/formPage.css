@@ -26,9 +26,10 @@ main {
       margin: auto; }
       main .form ul li {
         margin-bottom: 30px; }
-        main .form ul li #err {
+        main .form ul li span, main .form ul li #err {
           font-size: 0.75em;
-          color: #e53a3a;
+          color: #e53a3a; }
+        main .form ul li #err {
           float: right; }
       main .form ul input {
         width: 100%;

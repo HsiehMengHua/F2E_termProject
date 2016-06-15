@@ -33,9 +33,13 @@ main{
       li{
         margin-bottom: 30px;
         
-        #err{
+        span{
           font-size: 0.75em;
           color: #e53a3a;
+        }
+        
+        #err{
+          @extend span;
           float: right;
         }
       }

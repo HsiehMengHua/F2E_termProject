@@ -42,17 +42,17 @@ main > .container {
     main > .container .sidebar li {
       margin-top: 15px;
       font-size: 0.88em; }
-  main > .container .other_news .container {
+  main > .container .other .container {
     padding: 25px 40px;
     background-color: #e5e5e5; }
-    main > .container .other_news .container .prev-news, main > .container .other_news .container .next-news {
+    main > .container .other .container .prev-news, main > .container .other .container .next-news {
       width: 270px; }
-      main > .container .other_news .container .prev-news.hide, main > .container .other_news .container .next-news.hide {
+      main > .container .other .container .prev-news.hide, main > .container .other .container .next-news.hide {
         display: none; }
-    main > .container .other_news .container p {
+    main > .container .other .container p {
       font-size: 0.88em;
       color: #9b9b9b; }
-    main > .container .other_news .container .image {
+    main > .container .other .container .image {
       height: 152px;
       background-color: lightgray;
       background-size: cover;
@@ -92,4 +92,4 @@ footer {
       margin-bottom: 20px;
       border: 0; } }
 
-/*# sourceMappingURL=issue_article.css.map */
+/*# sourceMappingURL=article.css.map */
