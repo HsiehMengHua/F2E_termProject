@@ -3,14 +3,16 @@
 session_start();
 include("../connectDB.php");
 
-if(isset($_SESSION["member_id"])){
-  echo '<script>
-  if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
-    window.location.href="../member/logout.php";
-  }else{
-    history.back();
+if($_SESSION["member_id"] != 1){
+  if(isset($_SESSION["member_id"])){
+    echo '<script>
+    if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
+      window.location.href="../member/logout.php";
+    }else{
+      history.back();
+    }
+    </script>';
   }
-  </script>';
 }
 
 $err = "";
@@ -55,19 +57,6 @@ if(empty($email) || empty($password) || empty($userName) || empty($phone)){
       }else{
         echo "Somthing wrong. Email was not sent.";
       }
-
-      /*id寫入SESSION
-      $sql_retrieveId = "SELECT `id` FROM `member` WHERE `email` = '$email'";
-      $row = $conn->query($sql_retrieveId)->fetch_assoc();
-      $id = $row["id"];
-      $_SESSION["member_id"] = $id;
-
-      // Redirect to homepage
-      $host  = $_SERVER['HTTP_HOST'];
-      $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-      $extra = '../../index.html';
-      header("Location: http://$host$uri/$extra");
-      exit();*/
     }else{
       $err = "Error: ".$conn->error;
     }

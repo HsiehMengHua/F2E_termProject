@@ -3,14 +3,16 @@
 session_start();
 include("../connectDB.php");
 
-if(isset($_SESSION["member_id"])){
-  echo '<script>
-  if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
-    window.location.href="../member/logout.php";
-  }else{
-    history.back();
+if($_SESSION["member_id"] != 1){
+  if(isset($_SESSION["member_id"])){
+    echo '<script>
+    if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
+      window.location.href="../member/logout.php";
+    }else{
+      history.back();
+    }
+    </script>';
   }
-  </script>';
 }
 
 $err = "";
@@ -69,7 +71,9 @@ function input($data) {
     <div class="form">
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <ul>
-          <li><label>Email<input type="email" name="email" value="<?php echo (isset($_POST["email"]))?$_POST["email"]:""; ?>"></label></li>
+          <li><label>Email
+            <input type="email" name="email" value="<?php echo (isset($_POST["email"]))?$_POST["email"]:""; ?>">
+          </label></li>
           <li><label>密碼<input type="password" name="password"></label></li>
           <li class="clear">
             <button type="submit" class="submit">送出</button>
