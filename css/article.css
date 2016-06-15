@@ -30,7 +30,6 @@ nav {
   display: flex;
   justify-content: space-between; }
   #nav-right a {
-    color: #333333;
     font-size: 16px; }
 
 nav {
