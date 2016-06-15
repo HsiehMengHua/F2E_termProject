@@ -15,7 +15,7 @@ if(isset($_SESSION["member_id"])){
 
 $err = "";
 $email = (isset($_POST["email"]))?input($_POST["email"]):"";
-$password = (isset($_POST["password"]))?input($_POST["password"]):"";
+$password = (isset($_POST["password"]))?md5(input($_POST["password"])):"";
 
 $sql = "SELECT id,email,password FROM `member` WHERE `email` = '$email' AND `password` = '$password'";
 $result = $conn->query($sql);
@@ -69,7 +69,7 @@ function input($data) {
     <div class="form">
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <ul>
-          <li><label>Email<input type="email" name="email"></label></li>
+          <li><label>Email<input type="email" name="email" value="<?php echo (isset($_POST["email"]))?$_POST["email"]:""; ?>"></label></li>
           <li><label>密碼<input type="password" name="password"></label></li>
           <li class="clear">
             <button type="submit" class="submit">送出</button>

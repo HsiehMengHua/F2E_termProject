@@ -15,7 +15,7 @@ if(isset($_SESSION["member_id"])){
 
 $err = "";
 $email = (isset($_POST["email"]))?input($_POST["email"]):"";
-$password = (isset($_POST["password"]))?input($_POST["password"]):"";
+$password = (isset($_POST["password"]))?md5(input($_POST["password"])):"";
 $userName = (isset($_POST["userName"]))?input($_POST["userName"]):"";
 $phone = (isset($_POST["phone"]))?input($_POST["phone"]):"";
 date_default_timezone_set("Asia/Taipei");
