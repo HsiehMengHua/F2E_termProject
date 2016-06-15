@@ -2,6 +2,7 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Document</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../../css/style.css" />
@@ -14,7 +15,9 @@
     <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
   </nav>
   <main class="clear">
+
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
+    
     <div class="form">
       <form action="posting.php" method="post" enctype="multipart/form-data">
         <ul>
@@ -29,8 +32,8 @@
         </ul>
       </form>
     </div>
-  </main> 
-  
+  </main>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script>
     $(function() {

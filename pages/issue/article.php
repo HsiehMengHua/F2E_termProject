@@ -76,16 +76,17 @@ if(!$islatest){
 </head>
 
 <body>
- 
+
   <nav class="clear">
     <div><a href=""><i class="material-icons">menu</i></a></div>
     <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
   </nav>
-  
+
   <main>
     <div class="container">
       <div class="clear">
         <div class="main-content">
+
           <div class="heading">
             <h1><?php echo $title; ?></h1>
             <div class="article-info clear">
@@ -93,12 +94,16 @@ if(!$islatest){
               <p class="pull-right">這裡放分享連結</p>
             </div>
           </div>
+
           <img src="<?php echo $first_image; ?>" alt="<?php echo $title; ?>">
+
           <article>
             <?php echo $content; ?>
           </article>
+
           <div class="other_news">
             <div class="container clear">
+
               <div class="prev-news <?php echo ($issue_id == 1)?"hide":""; ?>">
                 <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>"><p>上一篇報導</p></a>
                 <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>">
@@ -109,6 +114,7 @@ if(!$islatest){
                 </a>
                 <p><?php echo $prev_source; ?></p>
               </div>
+              
               <div class="next-news pull-right <?php echo ($islatest)?"hide":""; ?>">
                 <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>"><p>下一篇報導</p></a>
                 <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>">
@@ -121,6 +127,7 @@ if(!$islatest){
               </div>
             </div>
           </div>
+
         </div>
         <div class="sidebar pull-right">
           <h4>大家在關注的報導</h4>
@@ -145,7 +152,7 @@ if(!$islatest){
     </ul>
     <p>Copyright &copy; 2016</p>
   </footer>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script>
     $(function(){
