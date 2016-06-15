@@ -54,7 +54,7 @@ main {
   background-position: 43% 50%;
   background-size: cover; }
 
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   main {
     display: flex;
     flex-direction: column;

@@ -1,17 +1,17 @@
 <?php
 
 session_start();
-if(!isset($_SESSION["member_id"]))
+if(!isset($_SESSION["member_id"]) || $_SESSION["member_id"] != 1)
   echo '<script>alert("登入先唷");window.location.href="../member/login.php";</script>';
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
   <title>Document</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../../css/bootstrap-material-datetimepicker.css" />
   <link rel="stylesheet" href="../../css/style.css" />
