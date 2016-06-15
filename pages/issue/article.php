@@ -102,7 +102,7 @@ if($result_next->num_rows){
     <div class="container">
       <div class="clear">
         <div class="main-content">
-         
+          
           <div class="heading">
             <h1><?php echo $title; ?></h1>
             <div class="article-info clear">
