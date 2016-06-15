@@ -50,6 +50,7 @@ function input($data) {
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>Document</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../../css/style.css" />
@@ -60,7 +61,7 @@ function input($data) {
     <div><a href=""><i class="material-icons">menu</i></a></div>
     <div class="pull-right">
       <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
-       / 
+
       <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
     </div>
   </nav>

@@ -10,6 +10,7 @@ if(!isset($_SESSION["member_id"]) || $_SESSION["member_id"] != 1)
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>launch</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../../css/bootstrap-material-datetimepicker.css">
@@ -21,7 +22,7 @@ if(!isset($_SESSION["member_id"]) || $_SESSION["member_id"] != 1)
     <div><a href=""><i class="material-icons">menu</i></a></div>
     <div class="pull-right">
       <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
-       / 
+       /
       <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
     </div>
   </nav>
@@ -42,7 +43,7 @@ if(!isset($_SESSION["member_id"]) || $_SESSION["member_id"] != 1)
       </form>
     </div>
   </main>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://momentjs.com/downloads/moment-with-locales.min.js"></script> <!-- 有 .min.js 在local資料夾 -->
   <script src="../../js/bootstrap-material-datetimepicker.js"></script>
@@ -62,7 +63,7 @@ if(!isset($_SESSION["member_id"]) || $_SESSION["member_id"] != 1)
         $(this).parent().css("color","#313b4f");
         $(this).css("borderBottomColor","#313b4f");
       });
-      
+
       $('#confirmPassword').keyup(function(){
         if($(this).val() == $('#password').val()){
           $(this).css("borderBottomColor","#75da7a");

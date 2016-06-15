@@ -29,19 +29,19 @@ if(empty($email) || empty($password) || empty($userName) || empty($phone)){
 }else{
   $sql = "SELECT * FROM `member` WHERE `email` = '$email'";
   $result = $conn->query($sql);
-  
+
   if($result->num_rows){
     $err = "Email已被註冊過";
   }else{
     $sql_insert = "INSERT INTO `member` (`id`, `email`, `password`, `name`, `phone`, `register_datetime`, `activated`, `activate_code`) VALUES (NULL, '$email', '$password', '$userName', '$phone', '$datetime', '0', '$act_code')";
     if($conn->query($sql_insert)){
-      
+
       //id寫入SESSION
       $sql_retrieveId = "SELECT `id` FROM `member` WHERE `email` = '$email'";
       $row = $conn->query($sql_retrieveId)->fetch_assoc();
       $id = $row["id"];
       $_SESSION["member_id"] = $id;
-      
+
       $header = "Content-type:text/html;charset=UTF-8";
       $header .= "\nFrom: mailnotice3@gmail.com";
       $host  = $_SERVER['HTTP_HOST'];
@@ -51,7 +51,7 @@ if(empty($email) || empty($password) || empty($userName) || empty($phone)){
       $text = '
       <p>你已註冊成為會員，請點擊以下連結驗證你的電子信箱：</p>
       <a href="'.$act_link.'">'.$act_link.'</a>';
-      
+
       if(mail($email,"會員帳號啟用信",$text,$header)){
         header("Location: act_sent.php");
       }else{
@@ -76,6 +76,7 @@ function input($data) {
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>Document</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../../css/style.css" />
@@ -86,7 +87,7 @@ function input($data) {
     <div><i class="material-icons">menu</i></div>
     <div class="pull-right">
       <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
-       / 
+       /
       <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
     </div>
   </nav>
@@ -117,7 +118,7 @@ function input($data) {
       </form>
     </div>
   </main>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script>
     $(function() {
@@ -129,7 +130,7 @@ function input($data) {
         $(this).parent().css("color","#313b4f");
         $(this).css("borderBottomColor","#313b4f");
       });
-      
+
       $('#confirmPassword').keyup(function(){
         if($(this).val() == $('#password').val()){
           $(this).css("borderBottomColor","#75da7a");
@@ -151,7 +152,7 @@ function input($data) {
       xhttp.onreadystatechange = function() {
         if(xhttp.readyState == 4 && xhttp.status == 200) {
           console.log(xhttp.responseText);
-          
+
           if(xhttp.responseText == "false"){
             $("#email").css("borderBottomColor","#75da7a");
             $("#email").parent().css("color","#75da7a");
