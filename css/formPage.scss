@@ -8,6 +8,7 @@ nav{
   padding: 17px 50px;
   width: 100%;
   position: fixed;
+  z-index: 99;
 
   @media (max-width: 768px){
     position: static;
@@ -19,7 +20,6 @@ main{
   height: 100%;
   position: absolute;
   top: 0;
-  z-index: -1;
 
   @media (max-width: 768px){
     position: static;
