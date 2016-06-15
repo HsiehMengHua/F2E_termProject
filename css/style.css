@@ -30,6 +30,10 @@ html, body {
   float: right;
 }
 
+.hide {
+  display: none;
+}
+
 li {
   list-style: none;
 }

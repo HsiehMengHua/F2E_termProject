@@ -41,10 +41,12 @@ while($row_popular = $result_popular->fetch_assoc()){
   array_push($popularTitleList,$row_popular['title']);
 }
 
-if($issue_id != 1){
-  $prev = $issue_id-1;
-  $sql_prev = "SELECT title,source,content FROM issue WHERE id='$prev'";
-  $row_prev = $conn->query($sql_prev)->fetch_assoc();
+// 取得上一篇
+$sql_prev = 'SELECT id,title,source,content FROM `issue` WHERE `id` <'.$_GET['id'].' ORDER BY `id` DESC LIMIT 1';
+$result_prev = $conn->query($sql_prev);
+if($result_prev->num_rows){
+  $row_prev = $result_prev->fetch_assoc();
+  $prev_id = $row_prev['id'];
   $prev_title = $row_prev['title'];
   $prev_source = $row_prev['source'];
   $prev_content = $row_prev['content'];
@@ -52,10 +54,12 @@ if($issue_id != 1){
   $prev_image = (isset($prev_matches[1]))?$prev_matches[1]:"";
 }
 
-if(!$islatest){
-  $next = $issue_id+1;
-  $sql_next = "SELECT title,source,content FROM issue WHERE id='$next'";
-  $row_next = $conn->query($sql_next)->fetch_assoc();
+// 取得下一篇
+$sql_next = 'SELECT id,title,source,content FROM `issue` WHERE `id` >'.$_GET['id'].' ORDER BY `id` ASC LIMIT 1';
+$result_next = $conn->query($sql_next);
+if($result_next->num_rows){
+  $row_next = $result_next->fetch_assoc();
+  $next_id = $row_next['id'];
   $next_title = $row_next['title'];
   $next_source = $row_next['source'];
   $next_content = $row_next['content'];
@@ -104,22 +108,22 @@ if(!$islatest){
           </article>
           <div class="other">
             <div class="container clear">
-              <div class="prev-news <?php echo ($issue_id == 1)?"hide":""; ?>">
-                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>"><p>上一篇報導</p></a>
-                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>">
+              <div class="prev-news <?php echo ($result_prev->num_rows)?"":"hide"; ?>">
+                <a href="<?php echo "article.php?id=$prev_id"; ?>"><p>上一篇報導</p></a>
+                <a href="<?php echo "article.php?id=$prev_id"; ?>">
                   <div class="image" style="background-image: url(<?php echo $prev_image; ?>)"></div>
                 </a>
-                <a href="<?php echo ($issue_id == 1)?"":"article.php?id=".($issue_id-1); ?>">
+                <a href="<?php echo "article.php?id=$prev_id"; ?>">
                   <h4><?php echo $prev_title; ?></h4>
                 </a>
                 <p><?php echo $prev_source; ?></p>
               </div>
-              <div class="next-news pull-right <?php echo ($islatest)?"hide":""; ?>">
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>"><p>下一篇報導</p></a>
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>">
+              <div class="next-news pull-right <?php echo ($result_next->num_rows)?"":"hide"; ?>">
+                <a href="<?php echo "article.php?id=$next_id"; ?>"><p>下一篇報導</p></a>
+                <a href="<?php echo "article.php?id=$next_id"; ?>">
                   <div class="image" style="background-image: url(<?php echo $next_image; ?>)"></div>
                 </a>
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($issue_id+1); ?>">
+                <a href="<?php echo "article.php?id=$next_id"; ?>">
                   <h4><?php echo $next_title; ?></h4>
                 </a>
                 <p><?php echo $next_source; ?></p>

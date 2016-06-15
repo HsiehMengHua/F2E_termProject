@@ -32,16 +32,12 @@ while($row_popular = $result_popular->fetch_assoc()){
   array_push($popularDateList,$row_popular['act_date']);
 }
 
-// 看是不是最新一篇
-$sql_latesetId = "SELECT `id` FROM `achievement` ORDER BY `id` DESC LIMIT 1";
-$row = $conn->query($sql_latesetId)->fetch_assoc();
-$latesetId = $row["id"];
-$islatest = ($_GET['id'] == $latesetId)?true:false;
-
-if($_GET['id'] != 1){
-  $prev = $_GET['id']-1;
-  $sql_prev = "SELECT location,act_date,content FROM achievement WHERE id='$prev'";
-  $row_prev = $conn->query($sql_prev)->fetch_assoc();
+// 取得上一篇
+$sql_prev = 'SELECT id,location,act_date,content FROM `achievement` WHERE `id` <'.$_GET['id'].' ORDER BY `id` DESC LIMIT 1';
+$result_prev = $conn->query($sql_prev);
+if($result_prev->num_rows){
+  $row_prev = $result_prev->fetch_assoc();
+  $prev_id = $row_prev['id'];
   $prev_location = $row_prev['location'];
   $prev_act_date = $row_prev['act_date'];
   $prev_content = $row_prev['content'];
@@ -49,10 +45,12 @@ if($_GET['id'] != 1){
   $prev_image = (isset($prev_matches[1]))?$prev_matches[1]:"";
 }
 
-if(!$islatest){
-  $next = $_GET['id']+1;
-  $sql_next = "SELECT location,act_date,content FROM achievement WHERE id='$next'";
-  $row_next = $conn->query($sql_next)->fetch_assoc();
+// 取得下一篇
+$sql_next = 'SELECT id,location,act_date,content FROM `achievement` WHERE `id` >'.$_GET['id'].' ORDER BY `id` ASC LIMIT 1';
+$result_next = $conn->query($sql_next);
+if($result_next->num_rows){
+  $row_next = $result_next->fetch_assoc();
+  $next_id = $row_next['id'];
   $next_location = $row_next['location'];
   $next_act_date = $row_next['act_date'];
   $next_content = $row_next['content'];
@@ -106,24 +104,24 @@ if(!$islatest){
           </article>
           <div class="other">
             <div class="container clear">
-              <div class="prev-news <?php echo ($_GET['id'] == 1)?"hide":""; ?>">
-                <a href="<?php echo ($_GET['id'] == 1)?"":"article.php?id=".($_GET['id']-1); ?>"><p>上一篇文章</p></a>
-                <a href="<?php echo ($_GET['id'] == 1)?"":"article.php?id=".($_GET['id']-1); ?>">
+              <div class="prev-news <?php echo ($result_prev->num_rows)?"":"hide"; ?>">
+                <a href="<?php echo "article.php?id=$prev_id"; ?>"><p>上一篇文章</p></a>
+                <a href="<?php echo "article.php?id=$prev_id"; ?>">
                   <div class="image" style="background-image: url(<?php echo $prev_image; ?>)"></div>
                 </a>
-                <a href="<?php echo ($_GET['id'] == 1)?"":"article.php?id=".($_GET['id']-1); ?>" class="clear">
+                <a href="<?php echo "article.php?id=$prev_id"; ?>" class="clear">
                   <h4><?php echo $prev_location; ?></h4>
                   <h4 class="date"><?php echo $prev_act_date; ?></h4>
                 </a>
               </div>
-              <div class="next-news pull-right <?php echo ($islatest)?"hide":""; ?>">
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($_GET['id']+1); ?>"><p>下一篇文章</p></a>
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($_GET['id']+1); ?>">
+              <div class="next-news pull-right <?php echo ($result_next->num_rows)?"":"hide"; ?>">
+                <a href="<?php echo "article.php?id=$next_id"; ?>"><p>下一篇文章</p></a>
+                <a href="<?php echo "article.php?id=$next_id"; ?>">
                   <div class="image" style="background-image: url(<?php echo $next_image; ?>)"></div>
                 </a>
-                <a href="<?php echo ($islatest)?"":"article.php?id=".($_GET['id']+1); ?>">
+                <a href="<?php echo "article.php?id=$next_id"; ?>" class="clear">
                   <h4><?php echo $next_location; ?></h4>
-                  <h4><?php echo $next_act_date; ?></h4>
+                  <h4 class="date"><?php echo $next_act_date; ?></h4>
                 </a>
               </div>
             </div>

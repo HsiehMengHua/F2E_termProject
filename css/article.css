@@ -43,12 +43,12 @@ main > .container {
       margin-top: 15px;
       font-size: 0.88em; }
   main > .container .other .container {
-    padding: 25px 40px;
+    padding: 30px 40px;
     background-color: #e5e5e5; }
     main > .container .other .container .prev-news, main > .container .other .container .next-news {
       width: 270px; }
-      main > .container .other .container .prev-news.hide, main > .container .other .container .next-news.hide {
-        display: none; }
+      main > .container .other .container .prev-news p, main > .container .other .container .next-news p {
+        margin-top: 10px; }
     main > .container .other .container p {
       font-size: 0.88em;
       color: #9b9b9b; }
