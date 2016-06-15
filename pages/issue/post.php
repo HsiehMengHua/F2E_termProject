@@ -31,7 +31,7 @@ if(!isset($_SESSION["member_id"]))
 
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
 
-    <div class="form">
+    <div class="form pull-right">
       <form action="posting.php" method="post" enctype="multipart/form-data">
         <ul>
           <li><label>報導標題</label><br><input type="text" name="title"></li>

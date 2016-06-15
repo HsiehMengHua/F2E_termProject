@@ -29,7 +29,7 @@ if(!isset($_SESSION["member_id"]))
   </nav>
   <main class="clear">
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
-    <div class="form">
+    <div class="form pull-right">
       <form action="posting.php" method="post">
         <ul>
           <li><label>哪個海灘？<input type="text" name="location"></label></li>
