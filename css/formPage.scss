@@ -1,11 +1,14 @@
-body{position: relative;}
+body{
+  position: relative;
+}
+
 nav{
   color: white;
   background-color: #313131;
   padding: 17px 50px;
   width: 100%;
   position: fixed;
-  
+
   @media (max-width: 768px){
     position: static;
   }
@@ -17,66 +20,66 @@ main{
   position: absolute;
   top: 0;
   z-index: -1;
-  
+
   @media (max-width: 768px){
     position: static;
   }
-  
+
   .main-image {
-	width: 30%;
+	  width: 30%;
     height: 100%;
     background-position: 43% 50%;
     background-size: cover;
     position: fixed;
-    
+
     @media (max-width: 768px){
       width: 100%;
       height: 170px;
       position: static;
       background-position: 43% 40%;
     }
-    
+
     @media (max-width: 480px){
       height: 120px;
     }
   }
-  
+
   .form{
     width: 70%;
     padding: 150px 0px 60px 0px;
-    
+
     @media (max-width: 768px){
       width: 100%;
       padding-top: 100px;
     }
-    
+
     @media (max-width: 480px){
       padding-top: 60px;
     }
-    
+
     form{
       max-width: 500px;
       margin: auto;
-      
+
       @media (max-width: 768px){
         max-width: 100%;
       }
-      
+
       li{
         margin-bottom: 30px;
-        
+
         @media (max-width: 768px){
           &:first-child,&:nth-child(2){
             padding: 0 50px;
           }
         }
-        
+
         @media (max-width: 480px){
           &:first-child,&:nth-child(2){
             padding: 0 25px;
           }
         }
-        
+
         input{
           width: 100%;
           padding: 10px 0;
@@ -114,5 +117,3 @@ main{
     }
   }
 }
-
-
