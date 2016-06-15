@@ -83,7 +83,7 @@ if($result_next->num_rows){
 
 <body>
 
-  <nav class="clear">
+  <nav>
     <div class="nav-container">
 
       <div id="nav-left">
