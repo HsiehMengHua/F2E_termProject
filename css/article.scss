@@ -45,7 +45,7 @@ nav {
     h4,
     h5,
     h6 {
-      line-height: 4em;
+      padding: 20px 0;
       font-weight: 500;
     }
     p {
@@ -117,7 +117,7 @@ nav {
   }
 }
 
-@media screen and (max-width:768px) {
+@media screen and (max-width:680px) {
   .other-container{
     flex-direction: column;
     align-items: center;
