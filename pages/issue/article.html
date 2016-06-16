@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width">
@@ -19,8 +20,7 @@
       </div>
 
       <div id="nav-right">
-        <a href="../member/register.php">註冊</a>
-         / 
+        <a href="../member/register.php">註冊</a> /
         <a href="../member/login.php">登入</a>
       </div>
     </div>
@@ -30,11 +30,11 @@
     <div class="container">
       <div class="clear">
         <div class="main-content">
-          
+
           <div class="heading">
             <h1>你買的是沐浴乳還是塑膠微粒？快上網查App</h1>
             <div class="article-info clear">
-              <p><i class="material-icons">schedule</i>  2016-06-14 00:18:37，上下游新聞市集</p>
+              <p><i class="material-icons">schedule</i> 2016-06-14 00:18:37，上下游新聞市集</p>
               <p class="pull-right">這裡放分享連結</p>
             </div>
           </div>
@@ -72,46 +72,61 @@
             </p>
           </article>
 
-          <div class="other">
-            <div class="container clear">
-              <div class="prev-news">
-                <a href=""><p>上一篇報導</p></a>
-                <a href="">
-                  <div class="image" style="background-image: url()"></div>
-                </a>
-                <a href="">
-                  <h4>這件事讓全台灣三千萬人都驚呆了</h4>
-                </a>
-                <p>來源</p>
-              </div>
-              <div class="next-news pull-right">
-                <a href=""><p>下一篇報導</p></a>
-                <a href="">
-                  <div class="image" style="background-image: url()"></div>
-                </a>
-                <a href="">
-                  <h4>塑膠微粒危害魚類生長 研究首度證實</h4>
-                </a>
-                <p>中央社</p>
-              </div>
+          <div class="other-container">
+
+            <div class="prev-news">
+              <a href="">
+                <p>上一篇報導</p>
+              </a>
+              <a href="">
+                <div class="image" style="background-image: url()"></div>
+              </a>
+              <a href="">
+                <h4>這件事讓全台灣三千萬人都驚呆了</h4>
+              </a>
+              <p>來源</p>
+            </div>
+
+            <div class="next-news">
+              <a href="">
+                <p>下一篇報導</p>
+              </a>
+              <a href="">
+                <div class="image" style="background-image: url()"></div>
+              </a>
+              <a href="">
+                <h4>塑膠微粒危害魚類生長 研究首度證實</h4>
+              </a>
+              <p>中央社</p>
             </div>
           </div>
+          <!--end other-container!-->
+
         </div>
+
         <div class="sidebar pull-right">
           <h4>大家在關注的報導</h4>
           <ul>
-            <li><a href=""></a>這件事讓全台灣三千萬人都驚呆了</li>
-            <li><a href=""></a>塑膠微粒危害魚類生長 研究首度證實</li>
-            <li><a href=""></a>你買的是沐浴乳還是塑膠微粒？快上網查App</li>
-            <li><a href=""></a>大刀解剖擱淺抹香鯨　肚全是「人類餵的塑膠袋」害死牠</li>
-            <li><a href=""></a>這件事讓全台灣三千萬人都驚呆了</li>
-            <li><a href=""></a>塑膠微粒危害魚類生長 研究首度證實</li>
-            <li><a href=""></a>你買的是沐浴乳還是塑膠微粒？快上網查App</li>
+            <li>
+              <a href=""></a>這件事讓全台灣三千萬人都驚呆了</li>
+            <li>
+              <a href=""></a>塑膠微粒危害魚類生長 研究首度證實</li>
+            <li>
+              <a href=""></a>你買的是沐浴乳還是塑膠微粒？快上網查App</li>
+            <li>
+              <a href=""></a>大刀解剖擱淺抹香鯨　肚全是「人類餵的塑膠袋」害死牠</li>
+            <li>
+              <a href=""></a>這件事讓全台灣三千萬人都驚呆了</li>
+            <li>
+              <a href=""></a>塑膠微粒危害魚類生長 研究首度證實</li>
+            <li>
+              <a href=""></a>你買的是沐浴乳還是塑膠微粒？快上網查App</li>
           </ul>
         </div>
       </div>
     </div>
   </main>
+
   <footer>
     <ul>
       <li><a href="">瀏覽活動</a></li>
@@ -125,13 +140,15 @@
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script>
-      var animaion = setInterval(update, 5);
-      function update(){
-        var y = document.querySelector("body").scrollTop-120;
-        if(y>0){
-          document.querySelector(".sidebar").style.top = y.toString()+"px";
-        }
+    var animaion = setInterval(update, 5);
+
+    function update() {
+      var y = document.querySelector("body").scrollTop - 120;
+      if (y > 0) {
+        document.querySelector(".sidebar").style.top = y.toString() + "px";
       }
+    }
   </script>
 </body>
+
 </html>

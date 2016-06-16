@@ -8,7 +8,6 @@ a {
 /* Nav Settings */
 nav {
   height: 65px;
-  background-color: white;
   display: flex;
   align-items: center;
   justify-content: center; }
@@ -23,9 +22,6 @@ nav {
 @media screen and (max-width: 1024px) {
   .nav-container {
     width: 100%;
-    padding: 0 40px; } }
-@media screen and (max-width: 768px) {
-  .nav-container {
     padding: 0 20px; } }
 @media screen and (max-width: 480px) {
   .nav-container {
@@ -35,8 +31,13 @@ nav {
   display: flex;
   justify-content: space-between; }
   #nav-right a {
-    color: #333333;
     font-size: 16px; }
+
+nav {
+  background-color: white; }
+
+#nav-right a {
+  color: #333333; }
 
 /* Container Settings */
 .container {
@@ -72,10 +73,6 @@ nav {
   background-color: white; }
 
 @media screen and (max-width: 1024px) {
-  .container {
-    width: 100%;
-    padding: 0 40px; } }
-@media screen and (max-width: 768px) {
   .container {
     width: 100%;
     padding: 0 20px; } }

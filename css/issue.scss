@@ -10,50 +10,16 @@ a{
 
 /* Nav Settings */
 
+@import "nav";
+
 nav{
-  height: 65px;
   background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .nav-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-}
-@media screen and (min-width: 1024px){
-  .nav-container{
-    width: 860px;
-  }
-}
-@media screen and (max-width: 1024px) {
-  .nav-container{
-    width: 100%;
-    padding: 0 40px;
-  }
-}
-
-@media screen and (max-width: 768px){
-  .nav-container{
-    padding: 0 20px;
-  }
-}
-
-@media screen and (max-width: 480px){
-  .nav-container{
-    padding: 0 10px;
-  }
 }
 
 #nav-right{
-  width: 85px;
-  display: flex;
-  justify-content: space-between;
 
   a{
     color: #333333;
-    font-size: 16px;
   }
 }
 
@@ -101,13 +67,6 @@ nav{
 }
 
 @media screen and (max-width: 1024px) {
-  .container{
-    width: 100%;
-    padding: 0 40px;
-  }
-}
-
-@media screen and (max-width: 768px){
   .container{
     width: 100%;
     padding: 0 20px;
