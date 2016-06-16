@@ -15,6 +15,6 @@ $conn = new mysqli($hostname, $username, $password, $DBname);
 // Check connection
 if ($conn->connect_error) {
     die("Error: "+$conn->connect_error);
-} 
+}
 
 ?>
