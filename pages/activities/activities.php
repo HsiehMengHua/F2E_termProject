@@ -13,7 +13,8 @@ $x = 0;
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <link rel="shortcut icon" sizes="32x32" href="../../img/icon/favicon.ico">
+  <title>用行動改變世界  為海洋保護盡一份心</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
   <link rel="stylesheet" href="../../css/style.css" />
@@ -140,6 +141,18 @@ $x = 0;
       xhttp.open("GET","load.php?o="+n,true);
       xhttp.send();
       n++;
+    }
+    
+    function join(id){
+      //alert(id);
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if(xhttp.readyState == 4 && xhttp.status == 200) {
+          alert(xhttp.responseText);
+        }
+      };
+      xhttp.open("GET","join.php?id="+id,true);
+      xhttp.send();
     }
   </script>
 </body>

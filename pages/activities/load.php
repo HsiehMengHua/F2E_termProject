@@ -2,7 +2,7 @@
 
 include("../connectDB.php");
   
-$sql = "SELECT `location`, `date`, `time` FROM `activity` ORDER BY `date` DESC LIMIT 1 OFFSET ".$_GET['o'];
+$sql = "SELECT `id`, `location`, `date`, `time` FROM `activity` ORDER BY `date` DESC LIMIT 1 OFFSET ".$_GET['o'];
 $result = $conn->query($sql);
 
 $x = $_GET['o']+1;
@@ -18,10 +18,10 @@ if($row = $result->fetch_assoc()){
   echo '<h3>'.$row['location'].'</h3>';
   echo '<p>日期：'.$row['date'].'</p>';
   echo '<p>時間：'.$row['time'].'</p>';
+  echo '<a href=""><button onclick="join('.$row['id'].');">我要參加</button></a>';
   echo '</div></div></div>';
-
-  $x++;
-  $h = 590+200*($x-2);
+  
+  $h = 590+200*($x-1);
   echo '<script>
   $("section").height('.$h.');
   $(".'.$nx.'").hide().fadeIn(800).animate({top: "30px"},{ queue: false},800);

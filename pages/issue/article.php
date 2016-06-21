@@ -93,13 +93,12 @@ if($result_next->num_rows){
       </div>
     </div>
   </nav>
-  
+
   <div class="menu">
     <div class="close"><i class="material-icons">close</i></div>
     <ul>
       <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
       <li><a href="../activities/launch.php">我要發起活動</a></li>
-      <li><a href="../report/report.php">回報問題海灘</a></li>
       <li><a href="../achievement/achievement.php">成就達成</a></li>
       <li><a href="../achievement/post.php">我要分享成果</a></li>
       <li><a href="issue.php">相關議題報導</a></li>
@@ -112,7 +111,7 @@ if($result_next->num_rows){
     <div class="container">
       <div class="clear">
         <div class="main-content">
-          
+
           <div class="heading">
             <h1><?php echo $title; ?></h1>
             <div class="article-info clear">
@@ -127,28 +126,26 @@ if($result_next->num_rows){
             <?php echo $content; ?>
           </article>
 
-          <div class="other">
-            <div class="container clear">
-              <div class="prev-news <?php echo ($result_prev->num_rows)?"":"hide"; ?>">
-                <a href="<?php echo "article.php?id=$prev_id"; ?>"><p>上一篇報導</p></a>
-                <a href="<?php echo "article.php?id=$prev_id"; ?>">
-                  <div class="image" style="background-image: url(<?php echo $prev_image; ?>)"></div>
-                </a>
-                <a href="<?php echo "article.php?id=$prev_id"; ?>">
-                  <h4><?php echo $prev_title; ?></h4>
-                </a>
-                <p><?php echo $prev_source; ?></p>
-              </div>
-              <div class="next-news pull-right <?php echo ($result_next->num_rows)?"":"hide"; ?>">
-                <a href="<?php echo "article.php?id=$next_id"; ?>"><p>下一篇報導</p></a>
-                <a href="<?php echo "article.php?id=$next_id"; ?>">
-                  <div class="image" style="background-image: url(<?php echo $next_image; ?>)"></div>
-                </a>
-                <a href="<?php echo "article.php?id=$next_id"; ?>">
-                  <h4><?php echo $next_title; ?></h4>
-                </a>
-                <p><?php echo $next_source; ?></p>
-              </div>
+          <div class="other-container">
+            <div class="prev-news <?php echo ($result_prev->num_rows)?"":"hide"; ?>">
+              <a href="<?php echo "article.php?id=$prev_id"; ?>"><p>上一篇報導</p></a>
+              <a href="<?php echo "article.php?id=$prev_id"; ?>">
+                <div class="image" style="background-image: url(<?php echo $prev_image; ?>)"></div>
+              </a>
+              <a href="<?php echo "article.php?id=$prev_id"; ?>">
+                <h4><?php echo $prev_title; ?></h4>
+              </a>
+              <p><?php echo $prev_source; ?></p>
+            </div>
+            <div class="next-news pull-right <?php echo ($result_next->num_rows)?"":"hide"; ?>">
+              <a href="<?php echo "article.php?id=$next_id"; ?>"><p>下一篇報導</p></a>
+              <a href="<?php echo "article.php?id=$next_id"; ?>">
+                <div class="image" style="background-image: url(<?php echo $next_image; ?>)"></div>
+              </a>
+              <a href="<?php echo "article.php?id=$next_id"; ?>">
+                <h4><?php echo $next_title; ?></h4>
+              </a>
+              <p><?php echo $next_source; ?></p>
             </div>
           </div>
         </div>
@@ -169,7 +166,6 @@ if($result_next->num_rows){
     <ul>
       <li><a href="../activities/activities.php">瀏覽活動</a></li>
       <li><a href="../activities/launch.php">發起活動</a></li>
-      <li><a href="../report/report.php">問題海灘回報</a></li>
       <li><a href="../achievement/achievement.php">成就達成</a></li>
       <li><a href="issue.php">相關議題報導</a></li>
     </ul>

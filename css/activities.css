@@ -196,7 +196,7 @@ section {
           position: absolute;
           left: 50%; }
           section .timeline .middle .node.right .content {
-            padding-top: 65px;
+            padding-top: 45px;
             padding-left: 170px; }
         section .timeline .middle .node.left {
           position: absolute;
@@ -210,7 +210,7 @@ section {
             -o-transform: scale(-1, -1);
             -webkit-transform: scale(-1, -1);
             transform: scale(-1, -1);
-            padding-bottom: 75px;
+            padding-bottom: 55px;
             padding-left: 100px; }
         section .timeline .middle .node .dot-wrapper {
           width: 26px;
@@ -231,6 +231,18 @@ section {
             line-height: 2.5em; }
           section .timeline .middle .node .dialog-box .content p {
             line-height: 2em; }
+          section .timeline .middle .node .dialog-box .content button {
+            height: 35px;
+            border: 1px solid #606f89;
+            color: #3a465c;
+            border-radius: 2px;
+            background-color: transparent;
+            margin-top: 20px;
+            padding: 0 20px;
+            vertical-align: middle;
+            line-height: 35px;
+            font-size: 0.88em;
+            cursor: pointer; }
 
 @-ms-keyframes spin {
   from {
@@ -272,10 +284,5 @@ section {
     transform: rotate(0deg); }
   to {
     transform: rotate(-360deg); } }
-/*
-.n1{margin-top: 100px;}
-.n2{margin-top: 300px;} // = 100+200*(x-1)
-.n3{margin-top: 500px;} // = 100+200*(x-1)
-.n4{margin-top: 700px;} // = 100+200*(x-1)*/
 
 /*# sourceMappingURL=activities.css.map */

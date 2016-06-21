@@ -16,16 +16,18 @@ nav {
 
 @media screen and (min-width: 1024px) {
   .nav-container {
-    width: 860px; } }
+    width: 100%;
+    padding: 0 40px; } }
 @media screen and (max-width: 1024px) {
   .nav-container {
     width: 100%;
     padding: 0 20px; } }
 @media screen and (max-width: 480px) {
   .nav-container {
+    width: 100%;
     padding: 0 10px; } }
 #nav-right {
-  width: 85px;
+  width: 120px;
   display: flex;
   justify-content: space-between; }
   #nav-right a {
