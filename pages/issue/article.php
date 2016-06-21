@@ -13,12 +13,6 @@ $source = $row['source'];
 $views = $row['views'];
 $content = $row['content'];
 
-// 看是不是最新一篇
-$sql_latesetId = "SELECT `id` FROM `issue` ORDER BY `id` DESC LIMIT 1";
-$row = $conn->query($sql_latesetId)->fetch_assoc();
-$latesetId = $row["id"];
-$islatest = ($issue_id == $latesetId)?true:false;
-
 // 找出內文中的第一個圖片
 preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $content, $matches);
 $first_image = (isset($matches[1]))?$matches[1]:"../../img/transparent.png";
@@ -33,8 +27,10 @@ $conn->query($sql_countViews);
 // 選60天內瀏覽次數最高的前7個報導，sidebar用
 $sql_popular = "SELECT `id`,`title` FROM `issue` WHERE `release_datetime` BETWEEN DATE_SUB(release_datetime,INTERVAL 60 DAY) AND NOW() ORDER BY `views` DESC LIMIT 7";
 $result_popular = $conn->query($sql_popular);
-$popularIdList = [];
-$popularTitleList = [];
+//$popularIdList = [];
+//$popularTitleList = [];
+$popularIdList = array();
+$popularTitleList = array();
 // 把多項結果存成陣列
 while($row_popular = $result_popular->fetch_assoc()){
   array_push($popularIdList,$row_popular['id']);
@@ -74,6 +70,7 @@ if($result_next->num_rows){
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title><?php echo $title; ?></title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css" />
@@ -81,20 +78,40 @@ if($result_next->num_rows){
 </head>
 
 <body>
- 
-  <nav class="clear">
-    <div><i class="material-icons">menu</i></div>
-    <div class="pull-right">
-      <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
-       / 
-      <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
+
+  <nav>
+    <div class="nav-container">
+
+      <div id="nav-left">
+        <div><i class="material-icons">menu</i></div>
+      </div>
+
+      <div id="nav-right">
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>'; ?>
+         /
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>'; ?>
+      </div>
     </div>
   </nav>
-  
+
+  <div class="menu">
+    <div class="close"><i class="material-icons">close</i></div>
+    <ul>
+      <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
+      <li><a href="../activities/launch.php">我要發起活動</a></li>
+      <li><a href="../achievement/achievement.php">成就達成</a></li>
+      <li><a href="../achievement/post.php">我要分享成果</a></li>
+      <li><a href="issue.php">相關議題報導</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/myAccount.php">會員中心</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/logout.php">登出</a></li>
+    </ul>
+  </div>
+
   <main>
     <div class="container">
       <div class="clear">
         <div class="main-content">
+
           <div class="heading">
             <h1><?php echo $title; ?></h1>
             <div class="article-info clear">
@@ -102,32 +119,33 @@ if($result_next->num_rows){
               <p class="pull-right">這裡放分享連結</p>
             </div>
           </div>
+
           <img src="<?php echo $first_image; ?>" alt="<?php echo $title; ?>">
+
           <article>
             <?php echo $content; ?>
           </article>
-          <div class="other">
-            <div class="container clear">
-              <div class="prev-news <?php echo ($result_prev->num_rows)?"":"hide"; ?>">
-                <a href="<?php echo "article.php?id=$prev_id"; ?>"><p>上一篇報導</p></a>
-                <a href="<?php echo "article.php?id=$prev_id"; ?>">
-                  <div class="image" style="background-image: url(<?php echo $prev_image; ?>)"></div>
-                </a>
-                <a href="<?php echo "article.php?id=$prev_id"; ?>">
-                  <h4><?php echo $prev_title; ?></h4>
-                </a>
-                <p><?php echo $prev_source; ?></p>
-              </div>
-              <div class="next-news pull-right <?php echo ($result_next->num_rows)?"":"hide"; ?>">
-                <a href="<?php echo "article.php?id=$next_id"; ?>"><p>下一篇報導</p></a>
-                <a href="<?php echo "article.php?id=$next_id"; ?>">
-                  <div class="image" style="background-image: url(<?php echo $next_image; ?>)"></div>
-                </a>
-                <a href="<?php echo "article.php?id=$next_id"; ?>">
-                  <h4><?php echo $next_title; ?></h4>
-                </a>
-                <p><?php echo $next_source; ?></p>
-              </div>
+
+          <div class="other-container">
+            <div class="prev-news <?php echo ($result_prev->num_rows)?"":"hide"; ?>">
+              <a href="<?php echo "article.php?id=$prev_id"; ?>"><p>上一篇報導</p></a>
+              <a href="<?php echo "article.php?id=$prev_id"; ?>">
+                <div class="image" style="background-image: url(<?php echo $prev_image; ?>)"></div>
+              </a>
+              <a href="<?php echo "article.php?id=$prev_id"; ?>">
+                <h4><?php echo $prev_title; ?></h4>
+              </a>
+              <p><?php echo $prev_source; ?></p>
+            </div>
+            <div class="next-news pull-right <?php echo ($result_next->num_rows)?"":"hide"; ?>">
+              <a href="<?php echo "article.php?id=$next_id"; ?>"><p>下一篇報導</p></a>
+              <a href="<?php echo "article.php?id=$next_id"; ?>">
+                <div class="image" style="background-image: url(<?php echo $next_image; ?>)"></div>
+              </a>
+              <a href="<?php echo "article.php?id=$next_id"; ?>">
+                <h4><?php echo $next_title; ?></h4>
+              </a>
+              <p><?php echo $next_source; ?></p>
             </div>
           </div>
         </div>
@@ -146,25 +164,24 @@ if($result_next->num_rows){
   </main>
   <footer>
     <ul>
-      <li><a href="">瀏覽活動</a></li>
-      <li><a href="">發起活動</a></li>
-      <li><a href="">問題海灘回報</a></li>
-      <li><a href="">相關議題報導</a></li>
-      <li><a href="">成就達成</a></li>
+      <li><a href="../activities/activities.php">瀏覽活動</a></li>
+      <li><a href="../activities/launch.php">發起活動</a></li>
+      <li><a href="../achievement/achievement.php">成就達成</a></li>
+      <li><a href="issue.php">相關議題報導</a></li>
     </ul>
     <p>Copyright &copy; 2016</p>
   </footer>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="../../js/menu.js"></script>
   <script>
-    $(function(){
       var animaion = setInterval(update, 5);
       function update(){
-        var y = $(this).scrollTop();
-        if(y>120)
-          $(".sidebar").css('top', y-120);
+        var y = document.querySelector("body").scrollTop-120;
+        if(y>0){
+          document.querySelector(".sidebar").style.top = y.toString()+"px";
+        }
       }
-    });
   </script>
 </body>
 </html>

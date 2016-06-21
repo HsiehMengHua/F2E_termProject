@@ -1,0 +1,42 @@
+nav{
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .nav-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    i{
+      cursor: pointer;
+    }
+  }
+}
+@media screen and (min-width: 1024px){
+  .nav-container{
+    width: 860px;
+  }
+}
+@media screen and (max-width: 1024px) {
+  .nav-container{
+    width: 100%;
+    padding: 0 20px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  .nav-container{
+    padding: 0 10px;
+  }
+}
+
+#nav-right{
+  width: 85px;
+  display: flex;
+  justify-content: space-between;
+
+  a{
+    font-size: 16px;
+  }
+}

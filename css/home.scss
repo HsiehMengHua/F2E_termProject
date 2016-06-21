@@ -1,0 +1,314 @@
+/* Global Settings */
+
+body {
+  background-color: #333333;
+  p{
+    font-size: 24px;
+    color: white;
+  }
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Nav Settings */
+
+@import "nav";
+@import "menu";
+
+nav {
+  background-color: white;
+}
+
+#nav-right {
+  a {
+    color: #333333;
+  }
+}
+
+/* Container Settings */
+
+.background {
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  position: fixed;
+  background-image: url(../img/paper_texture.jpg);
+  background-size: cover;
+  background-repeat: repeat;
+}
+
+.story-1 {
+  display: flex;
+  width: 100%;
+  height: 0px;
+  padding-top: 20%;
+  padding-bottom: 35%;
+  background-image: url(../img/home_image01.jpg);
+  background-size: cover;
+  background-position: center;
+  div {
+    margin: auto;
+    padding: 0px 10px;
+    background-color: black;
+    opacity: 0.6;
+  }
+}
+
+.story-2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0px 20px;
+  div {
+    margin-bottom: 30px;
+    padding: 0px 50px;
+    background-color: black;
+    opacity: 0.6;
+    p{
+      text-align: center;
+      line-height: 40px;
+    }
+  }
+  #doYouKnow {
+    margin-top: 30px;
+  }
+}
+
+.story-3 {
+  display: flex;
+  width: 100%;
+  height: 0px;
+  padding-top: 30%;
+  padding-bottom: 45%;
+  background-image: url(../img/home_image02.JPG);
+  background-position: center;
+  background-size: cover;
+  div {
+    padding: 0px 10px;
+    margin: auto;
+    background-color: black;
+    opacity: 0.6;
+  }
+}
+
+.story-4 {
+  display: flex;
+  width: 100%;
+  padding: 40px;
+  div {
+    margin: auto;
+    padding: 0px 10px;
+    background-color: black;
+    opacity: 0.6;
+  }
+}
+
+.story-5 {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  img {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+  }
+}
+
+.story-6 {
+  display: flex;
+  width: 100%;
+  padding: 40px;
+  margin-top: -30px;
+  div {
+    margin: auto;
+    padding: 0px 10px;
+    background-color: black;
+    opacity: 0.8;
+  }
+}
+
+.story-7 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 0px;
+  padding-top: 20%;
+  padding-bottom: 25%;
+  background-image: url(../img/Beach_Cleanup02.jpg);
+  background-size: cover;
+  background-position: center;
+  div {
+    padding: 0px 10px;
+    background-color: black;
+    opacity: 0.6;
+  }
+  #letsGo
+  {
+    margin-top: 10%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+
+  .story-2 {
+    flex-direction: column;
+  }
+
+  .story-5 {
+    flex-direction: column;
+  }
+
+  body p {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  body p {
+    font-size: 20px;
+  }
+
+  .story-2 div {
+    padding: 0px 10px;
+  }
+
+  .story-3 div {
+    width: 70%;
+  }
+
+}
+
+@media screen and (max-width: 480px) {
+
+  body p {
+    font-size: 16px;
+  }
+
+}
+
+/* Footer Settings */
+@import "footer";
+
+@media screen and (max-width: 1024px) {
+  .col-md-1 {
+    width: 8.332%;
+  }
+  .col-md-2 {
+    width: 16.662%;
+  }
+  .col-md-3 {
+    width: 25%;
+  }
+  .col-md-4 {
+    width: 33.332%;
+  }
+  .col-md-5 {
+    width: 41.662%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-7 {
+    width: 58.331%;
+  }
+  .col-md-8 {
+    width: 66.662%;
+  }
+  .col-md-9 {
+    width: 75%;
+  }
+  .col-md-10 {
+    width: 83.332%;
+  }
+  .col-md-11 {
+    width: 91.662%;
+  }
+  .col-md-12 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .col-sm-1 {
+    width: 8.332%;
+  }
+  .col-sm-2 {
+    width: 16.662%;
+  }
+  .col-sm-3 {
+    width: 25%;
+  }
+  .col-sm-4 {
+    width: 33.332%;
+  }
+  .col-sm-5 {
+    width: 41.662%;
+  }
+  .col-sm-6 {
+    width: 50%;
+  }
+  .col-sm-7 {
+    width: 58.331%;
+  }
+  .col-sm-8 {
+    width: 66.662%;
+  }
+  .col-sm-9 {
+    width: 75%;
+  }
+  .col-sm-10 {
+    width: 83.332%;
+  }
+  .col-sm-11 {
+    width: 91.662%;
+  }
+  .col-sm-12 {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .col-xs-1 {
+    width: 8.332%;
+  }
+  .col-xs-2 {
+    width: 16.662%;
+  }
+  .col-xs-3 {
+    width: 25%;
+  }
+  .col-xs-4 {
+    width: 33.332%;
+  }
+  .col-xs-5 {
+    width: 41.662%;
+  }
+  .col-xs-6 {
+    width: 50%;
+  }
+  .col-xs-7 {
+    width: 58.331%;
+  }
+  .col-xs-8 {
+    width: 66.662%;
+  }
+  .col-xs-9 {
+    width: 75%;
+  }
+  .col-xs-10 {
+    width: 83.332%;
+  }
+  .col-xs-11 {
+    width: 91.662%;
+  }
+  .col-xs-12 {
+    width: 100%;
+  }
+}

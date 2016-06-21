@@ -2,17 +2,20 @@
 
 session_start();
 include("../connectDB.php");
-$code = $_GET["code"];
 
-if(!isset($code) || !ereg("^[a-z0-9]{32}$",$code)){
-  header("Location: login.php");
-  exit();
+if($_SESSION['member_id'] != 1){
+  $code = $_GET["code"];
+  if(!isset($code) || !ereg("^[a-z0-9]{32}$",$code)){
+    echo '<script>alert("你哪位！？走開！"); history.back();</script>';
+  }else{
+    $sql = "UPDATE `member` SET `activated` = '1' WHERE `activate_code` = '$code'";
+    if($conn->query($sql))
+      $success = true;
+    else
+      $success = false;
+  }
 }else{
-  $sql = "UPDATE `member` SET `activated` = '1' WHERE `activate_code` = '$code'";
-  if($conn->query($sql))
-    $success = true;
-  else
-    $success = false;
+  $success = true;
 }
 
 ?>

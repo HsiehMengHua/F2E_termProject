@@ -3,19 +3,19 @@
 session_start();
 include("../connectDB.php");
 
-if(isset($_SESSION["member_id"])){
-  echo '<script>
-  if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
-    window.location.href="../member/logout.php";
-  }else{
-    history.back();
-  }
-  </script>';
+if(isset($_SESSION["member_id"]) && $_SESSION["member_id"] != 1){
+    echo '<script>
+    if (window.confirm("你已經登入，要登出再註冊新帳號嗎？")){
+      window.location.href="../member/logout.php";
+    }else{
+      history.back();
+    }
+    </script>';
 }
 
 $err = "";
 $email = (isset($_POST["email"]))?input($_POST["email"]):"";
-$password = (isset($_POST["password"]))?input($_POST["password"]):"";
+$password = (isset($_POST["password"]))?md5(input($_POST["password"])):"";
 
 $sql = "SELECT id,email,password FROM `member` WHERE `email` = '$email' AND `password` = '$password'";
 $result = $conn->query($sql);
@@ -50,6 +50,7 @@ function input($data) {
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title>Document</title>
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="../../css/style.css" />
@@ -57,19 +58,36 @@ function input($data) {
 </head>
 <body>
   <nav class="clear">
-    <div><a href=""><i class="material-icons">menu</i></a></div>
+    <div><i class="material-icons">menu</i></div>
     <div class="pull-right">
-      <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
+      <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>'; ?>
        / 
-      <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
+      <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>'; ?>
     </div>
   </nav>
+  
+  <div class="menu">
+    <div class="close"><i class="material-icons">close</i></div>
+    <ul>
+      <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
+      <li><a href="../activities/launch.php">我要發起活動</a></li>
+      <li><a href="../report/report.php">回報問題海灘</a></li>
+      <li><a href="../achievement/achievement.php">成就達成</a></li>
+      <li><a href="../achievement/post.php">我要分享成果</a></li>
+      <li><a href="../issue/issue.php">相關議題報導</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="myAccount.php">會員中心</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="logout.php">登出</a></li>
+    </ul>
+  </div>
+  
   <main class="clear">
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
-    <div class="form">
+    <div class="form pull-right">
       <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <ul>
-          <li><label>Email<input type="email" name="email"></label></li>
+          <li><label>Email
+            <input type="email" name="email" value="<?php echo (isset($_POST["email"]))?$_POST["email"]:""; ?>">
+          </label></li>
           <li><label>密碼<input type="password" name="password"></label></li>
           <li class="clear">
             <button type="submit" class="submit">送出</button>
@@ -80,17 +98,8 @@ function input($data) {
       </form>
     </div>
   </main>
-  <!--
-  <nav class="clear">
-    <div><a href=""><i class="material-icons">menu</i></a></div>
-    <div class="pull-right"><a href="">註冊</a> / <a href="">登入</a></div>
-  </nav>
-  <form action="login.php" method="post">
-    <ul>
-      <li><label>Email</label><br><input type="email" name="email"></li>
-      <li><label>密碼</label><br><input type="password" name="password"></li>
-      <li><input type="button" value="取消" onclick="history.back()"><input type="submit" value="送出"></li>
-    </ul>
-  </form>-->
+  
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="../../js/menu.js"></script>
 </body>
 </html>
