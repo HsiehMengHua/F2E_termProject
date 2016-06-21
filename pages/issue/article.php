@@ -13,12 +13,6 @@ $source = $row['source'];
 $views = $row['views'];
 $content = $row['content'];
 
-// 看是不是最新一篇
-$sql_latesetId = "SELECT `id` FROM `issue` ORDER BY `id` DESC LIMIT 1";
-$row = $conn->query($sql_latesetId)->fetch_assoc();
-$latesetId = $row["id"];
-$islatest = ($issue_id == $latesetId)?true:false;
-
 // 找出內文中的第一個圖片
 preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $content, $matches);
 $first_image = (isset($matches[1]))?$matches[1]:"../../img/transparent.png";
@@ -33,8 +27,10 @@ $conn->query($sql_countViews);
 // 選60天內瀏覽次數最高的前7個報導，sidebar用
 $sql_popular = "SELECT `id`,`title` FROM `issue` WHERE `release_datetime` BETWEEN DATE_SUB(release_datetime,INTERVAL 60 DAY) AND NOW() ORDER BY `views` DESC LIMIT 7";
 $result_popular = $conn->query($sql_popular);
-$popularIdList = [];
-$popularTitleList = [];
+//$popularIdList = [];
+//$popularTitleList = [];
+$popularIdList = array();
+$popularTitleList = array();
 // 把多項結果存成陣列
 while($row_popular = $result_popular->fetch_assoc()){
   array_push($popularIdList,$row_popular['id']);
@@ -91,9 +87,9 @@ if($result_next->num_rows){
       </div>
 
       <div id="nav-right">
-        <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>'; ?>
          /
-        <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>'; ?>
       </div>
     </div>
   </nav>
