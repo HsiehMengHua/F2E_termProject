@@ -2,6 +2,10 @@
 
 body {
   background-color: #333333;
+  p{
+    font-size: 24px;
+    color: white;
+  }
 }
 
 a {
@@ -30,7 +34,7 @@ nav {
   height: 100%;
   z-index: -1;
   position: fixed;
-  background-image: url(../img/ocean_texture.jpg);
+  background-image: url(../img/paper_texture.jpg);
   background-size: cover;
   background-repeat: repeat;
 }
@@ -38,118 +42,153 @@ nav {
 .story-1 {
   display: flex;
   width: 100%;
-  height: 660px;
+  height: 0px;
+  padding-top: 20%;
+  padding-bottom: 35%;
   background-image: url(../img/home_image01.jpg);
   background-size: cover;
   background-position: center;
   div {
     margin: auto;
-    padding: 20px;
+    padding: 0px 10px;
     background-color: black;
-    opacity: 0.8;
-    p{
-      font-size: 24px;
-      color: white;
-    }
+    opacity: 0.6;
   }
 }
 
 .story-2 {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  align-items: center;
   width: 100%;
-  height: 600px;
+  padding: 0px 20px;
   div {
-    padding: 20px;
-    margin: auto;
+    margin-bottom: 30px;
+    padding: 0px 50px;
     background-color: black;
-    opacity: 0.8;
+    opacity: 0.6;
     p{
-      font-size: 24px;
-      color: white;
-      line-height: 50px;
+      text-align: center;
+      line-height: 40px;
     }
+  }
+  #doYouKnow {
+    margin-top: 30px;
   }
 }
 
 .story-3 {
   display: flex;
   width: 100%;
-  height: 800px;
-  background-image: url(../img/home_image02.jpg);
-  background-size: cover;
+  height: 0px;
+  padding-top: 30%;
+  padding-bottom: 45%;
+  background-image: url(../img/home_image02.JPG);
   background-position: center;
+  background-size: cover;
   div {
-    padding: 20px;
+    padding: 0px 10px;
     margin: auto;
     background-color: black;
-    opacity: 0.8;
-    p{
-      font-size: 24px;
-      color: white;
-      line-height: 50px;
-    }
+    opacity: 0.6;
   }
 }
 
 .story-4 {
   display: flex;
   width: 100%;
-  height: 200px;
+  padding: 40px;
   div {
     margin: auto;
-    padding: 20px;
+    padding: 0px 10px;
     background-color: black;
-    opacity: 0.8;
-    p{
-      font-size: 24px;
-      color: white;
-      line-height: 50px;
-    }
+    opacity: 0.6;
   }
 }
 
 .story-5 {
   display: flex;
   width: 100%;
-  height: 300px;
   justify-content: space-around;
   align-items: center;
+  img {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 30px;
+  }
 }
 
 .story-6 {
   display: flex;
   width: 100%;
-  height: 200px;
+  padding: 40px;
+  margin-top: -30px;
   div {
     margin: auto;
-    padding: 20px;
+    padding: 0px 10px;
     background-color: black;
     opacity: 0.8;
-    p{
-      font-size: 24px;
-      color: white;
-      line-height: 50px;
-    }
+  }
+}
+
+.story-7 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 0px;
+  padding-top: 20%;
+  padding-bottom: 25%;
+  background-image: url(../img/Beach_Cleanup02.jpg);
+  background-size: cover;
+  background-position: center;
+  div {
+    padding: 0px 10px;
+    background-color: black;
+    opacity: 0.6;
+  }
+  #letsGo
+  {
+    margin-top: 10%;
   }
 }
 
 @media screen and (max-width: 1024px) {
-  .container {
-    width: 100%;
-    padding: 0 20px;
+
+  .story-2 {
+    flex-direction: column;
   }
+
+  .story-5 {
+    flex-direction: column;
+  }
+
+  body p {
+    font-size: 20px;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+
+  body p {
+    font-size: 20px;
+  }
+
+  .story-2 div {
+    padding: 0px 10px;
+  }
+
+  .story-3 div {
+    width: 70%;
+  }
+
 }
 
 @media screen and (max-width: 480px) {
 
-  .container {
-    width: 100%;
-    padding: 0 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  body p {
+    font-size: 16px;
   }
 
 }
