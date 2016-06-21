@@ -87,6 +87,20 @@ if($result_next->num_rows){
     </div>
   </nav>
   
+  <div class="menu">
+    <div class="close"><i class="material-icons">close</i></div>
+    <ul>
+      <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
+      <li><a href="../activities/launch.php">我要發起活動</a></li>
+      <li><a href="../report/report.php">回報問題海灘</a></li>
+      <li><a href="achievement.php">成就達成</a></li>
+      <li><a href="post.php">我要分享成果</a></li>
+      <li><a href="../issue/issue.php">相關議題報導</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/myAccount.php">會員中心</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/logout.php">登出</a></li>
+    </ul>
+  </div>
+  
   <main>
     <div class="container">
       <div class="clear">
@@ -144,16 +158,17 @@ if($result_next->num_rows){
   </main>
   <footer>
     <ul>
-      <li><a href="">瀏覽活動</a></li>
-      <li><a href="">發起活動</a></li>
-      <li><a href="">問題海灘回報</a></li>
-      <li><a href="">相關議題報導</a></li>
-      <li><a href="">成就達成</a></li>
+      <li><a href="../activities/activities.php">瀏覽活動</a></li>
+      <li><a href="../activities/launch.php">發起活動</a></li>
+      <li><a href="../report/report.php">問題海灘回報</a></li>
+      <li><a href="achievement.php">成就達成</a></li>
+      <li><a href="../issue/issue.php">相關議題報導</a></li>
     </ul>
     <p>Copyright &copy; 2016</p>
   </footer>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="../../js/menu.js"></script>
   <script>
     $(function(){
       var animaion = setInterval(update, 5);

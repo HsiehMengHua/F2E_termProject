@@ -7,6 +7,10 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    
+    i{
+      cursor: pointer;
+    }
   }
 }
 @media screen and (min-width: 1024px){

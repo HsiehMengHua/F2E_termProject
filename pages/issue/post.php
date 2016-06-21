@@ -27,6 +27,21 @@ if(!isset($_SESSION["member_id"]))
       <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
     </div>
   </nav>
+  
+  <div class="menu">
+    <div class="close"><i class="material-icons">close</i></div>
+    <ul>
+      <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
+      <li><a href="../activities/launch.php">我要發起活動</a></li>
+      <li><a href="../report/report.php">回報問題海灘</a></li>
+      <li><a href="../achievement/achievement.php">成就達成</a></li>
+      <li><a href="../achievement/post.php">我要分享成果</a></li>
+      <li><a href="issue.php">相關議題報導</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/myAccount.php">會員中心</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/logout.php">登出</a></li>
+    </ul>
+  </div>
+  
   <main class="clear">
 
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
@@ -48,6 +63,7 @@ if(!isset($_SESSION["member_id"]))
   </main>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="../../js/menu.js"></script>
   <script>
     $(function() {
       $('form input').on("focus",function(){
