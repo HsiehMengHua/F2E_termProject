@@ -7,6 +7,8 @@ nav {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+    nav .nav-container i {
+      cursor: pointer; }
 
 @media screen and (min-width: 1024px) {
   .nav-container {
@@ -27,6 +29,38 @@ nav {
 
 nav {
   background-color: white; }
+
+.menu {
+  background-color: #97c3be;
+  width: 355px;
+  height: 100%;
+  font-size: 1.17em;
+  line-height: 3em;
+  position: fixed;
+  top: 0;
+  left: -355px;
+  z-index: 99; }
+  .menu .close {
+    height: 65px;
+    text-align: right;
+    margin-bottom: 30px;
+    margin-right: 30px; }
+    .menu .close i {
+      font-size: 2em;
+      line-height: 65px;
+      cursor: pointer; }
+  .menu li {
+    width: 100%;
+    padding-left: 28%; }
+    .menu li.current {
+      background-color: #7db7b1; }
+    .menu li:hover {
+      background-color: #7db7b1; }
+    .menu li a {
+      -webkit-transition: color .5s;
+      transition: color .5s; }
+      .menu li a:hover {
+        color: #33717c; }
 
 footer {
   background-color: #e0caad;

@@ -1,6 +1,5 @@
 <?php session_start(); ?>
 
-
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -64,6 +63,21 @@
       <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>'; ?>
     </div>
   </nav>
+  
+  <div class="menu">
+    <div class="close"><i class="material-icons">close</i></div>
+    <ul>
+      <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
+      <li><a href="../activities/launch.php">我要發起活動</a></li>
+      <li><a href="../report/report.php">回報問題海灘</a></li>
+      <li><a href="../achievement/achievement.php">成就達成</a></li>
+      <li><a href="../achievement/post.php">我要分享成果</a></li>
+      <li><a href="../issue/issue.php">相關議題報導</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="myAccount.php">會員中心</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="logout.php">登出</a></li>
+    </ul>
+  </div>
+  
   <h1><i class="material-icons">mail_outline</i>Email驗證</h1>
   <div class="wrap">
     <p>驗證信已送出，請至email點擊驗證連結。</p>
@@ -72,6 +86,7 @@
   </div>
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="../../js/menu.js"></script>
   <script>
     var timer = 60;
     var int = setInterval(function(){
