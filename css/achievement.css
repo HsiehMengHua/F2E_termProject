@@ -1,0 +1,140 @@
+/* Global Settings */
+body {
+  background-color: #333333; }
+
+a {
+  text-decoration: none; }
+
+/* Nav Settings */
+nav {
+  height: 65px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+  nav .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+
+#nav-right {
+  width: 85px;
+  display: flex;
+  justify-content: space-between; }
+  #nav-right a {
+    color: #333333;
+    font-size: 16px; }
+
+/* Container Settings */
+.container {
+  margin-top: 95px;
+  margin-bottom: 65px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.container1 {
+  margin-top: 95px;
+  margin-bottom: 65px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#issue-title {
+  color: #e0e0e0; }
+
+#green-bar {
+  margin-top: 24px;
+  width: 100%;
+  height: 5px;
+  background-color: #75da7a; }
+
+/* date */
+#dateNew {
+  margin-top: 65px;
+  margin-bottom: -40px;
+  color: #6f817d; }
+
+/*waterfall*/
+#outbox {
+  column-count: 3;
+  column-gap: 28px;
+  width: 860px;
+  margin: 0 auto;
+  margin-top: -3px; }
+
+.content_box {
+  margin-top: 28px;
+  width: 268px;
+  height: 240px;
+  display: inline-block;
+  overflow: hidden;
+  background-color: #b5b5b5; }
+
+.content_boxWhite {
+  display: block;
+  width: 268px;
+  height: 65px;
+  background-color: white;
+  margin-top: 175px; }
+
+.grid {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.grid-item {
+  width: 268px;
+  height: 240px;
+  border-radius: 4px;
+  box-sizing: border-box; }
+
+.text {
+  width: 180px;
+  color: #333333;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 17px 17px;
+  margin-right: 0px; }
+
+.text2 {
+  width: 268px;
+  color: #feb143;
+  font-size: 16px;
+  font-weight: bold;
+  padding-left: 150px; }
+
+/* Footer Settings */
+footer {
+  background-color: #e0caad;
+  background-image: url(../img/footer.jpg);
+  background-position: left center;
+  padding: 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  footer ul {
+    margin: auto;
+    display: flex;
+    justify-content: center; }
+    footer ul li {
+      font-size: 87%;
+      padding: 0 20px;
+      border-left: 1px solid #313b4f; }
+      footer ul li:first-child {
+        border: 0; }
+  footer p {
+    font-size: 87%;
+    margin-top: 20px; }
+
+@media screen and (max-width: 768px) {
+  footer ul li {
+    padding: 0 10px; } }
+@media screen and (max-width: 480px) {
+  footer ul {
+    flex-direction: column;
+    align-items: center; }
+    footer ul li {
+      margin-bottom: 20px;
+      border: 0; } }
+
+/*# sourceMappingURL=achievement.css.map */
