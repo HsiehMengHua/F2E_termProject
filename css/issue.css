@@ -82,7 +82,7 @@ nav {
   margin-right: auto; }
 
 #issue-title {
-  color: #e0e0e0; }
+  color: white; }
 
 #green-bar {
   margin-top: 24px;
@@ -92,19 +92,52 @@ nav {
 
 .issues {
   margin-top: 65px; }
-  .issues li {
-    display: flex;
-    margin-bottom: 40px; }
+  .issues ul {
+    margin-bottom: 100px; }
+    .issues ul li {
+      display: flex;
+      margin-bottom: 40px;
+      background-color: white; }
+      .issues ul li a {
+        width: 100%;
+        height: 100%; }
+  .issues img {
+    width: 50px;
+    display: block;
+    margin: auto;
+    -webkit-animation-name: spin;
+    -webkit-animation-duration: 1000ms;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-name: spin;
+    -moz-animation-duration: 1000ms;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: linear;
+    -ms-animation-name: spin;
+    -ms-animation-duration: 1000ms;
+    -ms-animation-iteration-count: infinite;
+    -ms-animation-timing-function: linear;
+    animation-name: spin;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear; }
 
 .issue-image {
   width: 320px;
-  height: 240px;
-  background-color: gray; }
+  background-color: lightgray;
+  background-size: cover;
+  background-position: center; }
 
 .issue-content {
   width: 540px;
-  height: 240px;
-  background-color: white; }
+  padding: 52px 50px;
+  display: inline; }
+  .issue-content .small {
+    font-size: 0.87em;
+    color: #9c9c9c;
+    margin: 10px 0; }
+  .issue-content .context {
+    line-height: 2em; }
 
 @media screen and (max-width: 1024px) {
   .container {
@@ -158,6 +191,26 @@ footer {
     footer ul li {
       margin-bottom: 20px;
       border: 0; } }
+@-ms-keyframes spin {
+  from {
+    -ms-transform: rotate(0deg); }
+  to {
+    -ms-transform: rotate(360deg); } }
+@-moz-keyframes spin {
+  from {
+    -moz-transform: rotate(0deg); }
+  to {
+    -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin {
+  from {
+    -webkit-transform: rotate(0deg); }
+  to {
+    -webkit-transform: rotate(360deg); } }
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }
 @media screen and (max-width: 1024px) {
   .col-md-1 {
     width: 8.332%; }

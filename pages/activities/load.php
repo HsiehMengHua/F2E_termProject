@@ -8,6 +8,9 @@ $result = $conn->query($sql);
 $x = $_GET['o']+1;
 //while($row = $result->fetch_assoc()){
 if($row = $result->fetch_assoc()){
+  $sql_num = "SELECT `num_participant` FROM `activity` WHERE `id`=".$row['id'];
+  $row_num = $conn->query($sql_num)->fetch_assoc();
+  
   $nx = 'n'.$x;
   $side = ($x%2 == 0)?'left':'right';
 
@@ -19,6 +22,7 @@ if($row = $result->fetch_assoc()){
   echo '<p>日期：'.$row['date'].'</p>';
   echo '<p>時間：'.$row['time'].'</p>';
   echo '<a href=""><button onclick="join('.$row['id'].');">我要參加</button></a>';
+  echo '<span>已有 <span>'.$row_num['num_participant'].'</span> 人</span>';
   echo '</div></div></div>';
   
   $h = 590+200*($x-1);

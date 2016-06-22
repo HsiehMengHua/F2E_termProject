@@ -52,6 +52,8 @@ $x = 0;
     <div class="jumbotron"><h1>「用行動改變世界，為海洋保護盡一份心。」</h1></div>
     <h1>下一場活動，<br>我來號召！</h1>
     <section>
+      <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
+      
       <div class="timeline">
         <div class="line"></div>
         <div class="middle">
@@ -155,5 +157,6 @@ $x = 0;
       xhttp.send();
     }
   </script>
+  <script src="../../js/gotoTop.js"></script>
 </body>
 </html>
