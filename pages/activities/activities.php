@@ -18,6 +18,7 @@ $x = 0;
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="http://s.mlcdn.co/animate.css">
   <link rel="stylesheet" href="../../css/style.css" />
+  <link rel="stylesheet" href="../../css/gotoTop.css" />
   <link rel="stylesheet" href="../../css/activities.css" />
 </head>
 <body>

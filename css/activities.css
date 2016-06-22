@@ -12,16 +12,18 @@ nav {
 
 @media screen and (min-width: 1024px) {
   .nav-container {
-    width: 860px; } }
+    width: 100%;
+    padding: 0 40px; } }
 @media screen and (max-width: 1024px) {
   .nav-container {
     width: 100%;
     padding: 0 20px; } }
 @media screen and (max-width: 480px) {
   .nav-container {
+    width: 100%;
     padding: 0 10px; } }
 #nav-right {
-  width: 85px;
+  width: 120px;
   display: flex;
   justify-content: space-between; }
   #nav-right a {
@@ -250,34 +252,6 @@ section {
             section .timeline .middle .node .dialog-box .content span > span {
               font-size: 1em;
               color: #fa9632; }
-
-#back-to-top {
-  position: fixed;
-  bottom: 40px;
-  right: 40px;
-  z-index: 9999;
-  width: 55px;
-  height: 55px;
-  text-align: center;
-  line-height: 55px;
-  background: rgba(245, 245, 245, 0.8);
-  color: #606f89;
-  cursor: pointer;
-  border: 0;
-  border-radius: 2px;
-  text-decoration: none;
-  transition: opacity 0.2s ease-out;
-  opacity: 0;
-  font-size: 1.4em; }
-
-#back-to-top:hover {
-  background: #e9ebec; }
-
-#back-to-top.show {
-  opacity: 1; }
-
-#content {
-  height: 2000px; }
 
 @-ms-keyframes spin {
   from {

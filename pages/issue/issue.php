@@ -16,6 +16,7 @@ $result = $conn->query($sql);
   <title>環保議題，由你發起</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/gotoTop.css" />
   <link rel="stylesheet" href="../../css/issue.css">
 </head>
 <body>
@@ -51,7 +52,7 @@ $result = $conn->query($sql);
 
     <h1 id="issue-title">相關議題報導</h1>
     <div id="green-bar"></div>
-
+    <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
     <div class="issues">
       <ul>
         <?php
@@ -65,8 +66,8 @@ $result = $conn->query($sql);
               <div class="issue-image col-xs-12 col-sm-4 col-md-4" style="background-image: url('.$image.')"></div>
               <div class="issue-content col-xs-12 col-sm-8 col-md-8">
                 <h2>'.$row['title'].'</h2>
-                <p class="small">'.$row['release_datetime'].'，'.$row['source'].'</p>
-                <p class="context">'.mb_substr($row['content'],0,50,"utf-8").'</p>
+                <p class="small">'.$row['release_datetime'].'，'.$row['source'].'</p>'.
+                /*<p class="context">'.mb_substr($row['content'],0,50,"utf-8").*/'</p>
               </div>
             </li>
           </a>';
@@ -87,7 +88,7 @@ $result = $conn->query($sql);
         -->
       </ul>
       
-      <img src="../../img/icon/icon_loading.png" alt="">
+      <img src="../../img/icon/icon_loading.png" alt="" class="loading hide">
     </div>
   </div>
 
@@ -102,19 +103,26 @@ $result = $conn->query($sql);
   </footer>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="../../js/menu.js"></script>
   <script>
-      var n = 1;
-      $(window).scroll(function() {
-        if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-          //loadPage();
-        }
-      });
+    var n = 1;
+    $(window).scroll(function() {
+      if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+        loadPage();
+      }
+    });
     
     function loadPage(){
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if(xhttp.readyState == 4 && xhttp.status == 200) {
-          $(".issues>ul").append(xhttp.responseText);
+          if(xhttp.responseText == '<i class="end">end</i>')
+            $(".end").html(xhttp.responseText);
+          else
+            $(".issues>ul").append(xhttp.responseText);
+          $(".loading").css("display","none");
+        }else{
+          $(".loading").css("display","block");
         }
       };
       console.log(n);
@@ -123,6 +131,6 @@ $result = $conn->query($sql);
       n++;
     }
   </script>
-  <script src="../../js/menu.js"></script>
+  <script src="../../js/gotoTop.js"></script>
 </body>
 </html>
