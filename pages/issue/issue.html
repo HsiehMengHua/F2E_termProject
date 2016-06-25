@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>環保議題，由你發起</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="../../css/issue.css">
+</head>
+<body>
+  <nav>
+    <div class="nav-container">
+
+      <div id="nav-left">
+        <div><i class="material-icons">menu</i></div>
+      </div>
+
+      <div id="nav-right">
+        <div id="sign-up"><a href="">註冊</a></div>
+        <span>/</span>
+        <div id="sign-in"><a href="">登入</a></div>
+      </div>
+    </div>
+  </nav>
+
+  <div class="menu">
+    <div class="close"><i class="material-icons">close</i></div>
+    <ul>
+      <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
+      <li><a href="../activities/launch.php">我要發起活動</a></li>
+      <li><a href="../achievement/achievement.php">成就達成</a></li>
+      <li><a href="../achievement/post.php">我要分享成果</a></li>
+      <li class="current"><a href="">相關議題報導</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/myAccount.php">會員中心</a></li>
+      <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/logout.php">登出</a></li>
+    </ul>
+  </div>
+
+  <div class="container">
+
+    <h1 id="issue-title">相關議題報導</h1>
+    <div id="green-bar"></div>
+
+    <div class="issues">
+      <ul>
+
+        <li>
+          <div class="issue-image col-xs-12 col-sm-4 col-md-4"></div>
+          <div class="issue-content col-xs-12 col-sm-8 col-md-8"></div>
+        </li>
+
+        <li>
+          <div class="issue-image col-xs-12 col-sm-4 col-md-4"></div>
+          <div class="issue-content col-xs-12 col-sm-8 col-md-8"></div>
+        </li>
+
+        <li>
+          <div class="issue-image col-xs-12 col-sm-4 col-md-4"></div>
+          <div class="issue-content col-xs-12 col-sm-8 col-md-8"></div>
+        </li>
+
+        <li>
+          <div class="issue-image col-xs-12 col-sm-4 col-md-4"></div>
+          <div class="issue-content col-xs-12 col-sm-8 col-md-8"></div>
+        </li>
+
+      </ul>
+    </div>
+  </div>
+
+  <footer>
+    <ul>
+      <li><a href="../activities/activities.php">瀏覽活動</a></li>
+      <li><a href="../activities/launch.php">發起活動</a></li>
+      <li><a href="../achievement/achievement.php">成就達成</a></li>
+      <li><a href="../achievement/post.php">相關議題報導</a></li>
+    </ul>
+    <p>Copyright &copy; 2016</p>
+  </footer>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+  <script src="../../js/menu.js"></script>
+</body>
+</html>

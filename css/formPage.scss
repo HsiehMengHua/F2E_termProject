@@ -2,19 +2,18 @@
 body{
   position: relative;
 }
-
+@import "nav";
 nav{
   color: white;
   background-color: #313131;
-  padding: 17px 50px;
-  width: 100%;
   position: fixed;
   z-index: 99;
+  width: 100%;
 
   @media (max-width: 768px){
     position: static;
   }
-  
+
   i{
     cursor: pointer;
   }
@@ -75,7 +74,7 @@ main{
 
         @media (max-width: 768px){
           padding: 0 50px;
-          
+
           &.editor{
             padding: 0;
           }
@@ -83,7 +82,7 @@ main{
 
         @media (max-width: 480px){
           padding: 0 25px;
-          
+
           &.editor{
             padding: 0;
           }

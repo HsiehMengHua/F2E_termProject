@@ -30,7 +30,7 @@ if($result->num_rows){
   // Redirect to homepage
   $host  = $_SERVER['HTTP_HOST'];
   $uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
-  $extra = '../../index.html';
+  $extra = '../../index.php';
   header("Location: http://$host$uri/$extra");
   exit();
 }else{ // 登入失敗
@@ -57,21 +57,24 @@ function input($data) {
   <link rel="stylesheet" href="../../css/formPage.css" />
 </head>
 <body>
-  <nav class="clear">
-    <div><i class="material-icons">menu</i></div>
-    <div class="pull-right">
-      <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>'; ?>
-       / 
-      <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>'; ?>
+  <nav>
+    <div class="nav-container">
+      <div id="nav-left">
+        <div><i class="material-icons">menu</i></div>
+      </div>
+      <div id="nav-right">
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>'; ?>
+         /
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>'; ?>
+      </div>
     </div>
   </nav>
-  
+
   <div class="menu">
     <div class="close"><i class="material-icons">close</i></div>
     <ul>
       <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
       <li><a href="../activities/launch.php">我要發起活動</a></li>
-      <li><a href="../report/report.php">回報問題海灘</a></li>
       <li><a href="../achievement/achievement.php">成就達成</a></li>
       <li><a href="../achievement/post.php">我要分享成果</a></li>
       <li><a href="../issue/issue.php">相關議題報導</a></li>
@@ -79,7 +82,7 @@ function input($data) {
       <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="logout.php">登出</a></li>
     </ul>
   </div>
-  
+
   <main class="clear">
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>
     <div class="form pull-right">
@@ -98,7 +101,7 @@ function input($data) {
       </form>
     </div>
   </main>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="../../js/menu.js"></script>
 </body>

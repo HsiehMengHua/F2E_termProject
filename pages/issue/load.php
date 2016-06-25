@@ -15,8 +15,8 @@ if($result->num_rows){
         <div class="issue-image col-xs-12 col-sm-4 col-md-4" style="background-image: url('.$image.')"></div>
         <div class="issue-content col-xs-12 col-sm-8 col-md-8">
           <h2>'.$row['title'].'</h2>
-          <p class="small">'.$row['release_datetime'].'，'.$row['source'].'</p>'.
-          /*<p class="context">'.mb_substr($row['content'],0,50,"utf-8").*/'</p>
+          <p class="small">'.$row['release_datetime'].'，'.$row['source'].'</p>
+          <p class="context">'.mb_substr($row['content'],0,50,"utf-8").'</p>
         </div>
       </li>
     </a>';

@@ -62,7 +62,6 @@ if($_SESSION['member_id'] != 1){
         <li><a href="">管理會員資料</a></li>
         <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
         <li><a href="../activities/launch.php">發起活動</a></li>
-        <li><a href="">回報問題海灘</a></li>
         <li><a href="">瀏覽活動成果分享</a></li>
         <li><a href="../issue/issue.html">瀏覽相關議題報導</a></li>
       </ul>

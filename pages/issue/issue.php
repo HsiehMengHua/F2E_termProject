@@ -28,9 +28,9 @@ $result = $conn->query($sql);
       </div>
 
       <div id="nav-right">
-        <div id="sign-up"><a href="">註冊</a></div>
-        <span>/</span>
-        <div id="sign-in"><a href="">登入</a></div>
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>'; ?>
+         /
+        <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>'; ?>
       </div>
     </div>
   </nav>
@@ -56,7 +56,7 @@ $result = $conn->query($sql);
     <div class="issues">
       <ul>
         <?php
-        
+
         while($row = $result->fetch_assoc()){
           preg_match('/< *img[^>]*src *= *["\']?([^"\']*)/i', $row['content'], $matches);
           $image = (isset($matches[1]))?$matches[1]:'';
@@ -66,13 +66,13 @@ $result = $conn->query($sql);
               <div class="issue-image col-xs-12 col-sm-4 col-md-4" style="background-image: url('.$image.')"></div>
               <div class="issue-content col-xs-12 col-sm-8 col-md-8">
                 <h2>'.$row['title'].'</h2>
-                <p class="small">'.$row['release_datetime'].'，'.$row['source'].'</p>'.
-                /*<p class="context">'.mb_substr($row['content'],0,50,"utf-8").*/'</p>
+                <p class="small">'.$row['release_datetime'].'，'.$row['source'].'</p>
+                <p class="context">'.mb_substr($row['content'],0,50,"utf-8").'</p>
               </div>
             </li>
           </a>';
         }
-        
+
         ?>
         <!--
         <a href="">
@@ -87,7 +87,7 @@ $result = $conn->query($sql);
         </a>
         -->
       </ul>
-      
+
       <img src="../../img/icon/icon_loading.png" alt="" class="loading hide">
     </div>
   </div>
@@ -111,7 +111,7 @@ $result = $conn->query($sql);
         loadPage();
       }
     });
-    
+
     function loadPage(){
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {

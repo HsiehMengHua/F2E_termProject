@@ -9,18 +9,9 @@ a{
 }
 
 /* Nav Settings */
-
+@import "nav";
 nav{
-  height: 65px;
   background-color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  .nav-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
 }
 
 
@@ -34,6 +25,8 @@ nav{
     font-size: 16px;
   }
 }
+
+@import "menu";
 
 /* Container Settings */
 
@@ -83,12 +76,14 @@ nav{
 
 .content_box{
   margin-top: 28px;
-	width:268px;
+  margin-right: 25px;
+  width:268px;
   height: 240px;
   display:inline-block;
   overflow:hidden;
   background-color: rgb(181, 181, 181);
-
+  background-size: cover;
+  background-position: center;
 }
 .content_boxWhite{
   display: block;

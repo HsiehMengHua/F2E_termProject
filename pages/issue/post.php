@@ -2,8 +2,8 @@
 <?php
 
 session_start();
-if($_SESSION["member_id"] != 1)
-  echo '<script>alert("你不是管理員唷");history.back();</script>';
+if(!isset($_SESSION["member_id"]))
+  echo '<script>alert("登入先唷");window.location.href="../member/login.php";</script>';
 
 ?>
 
@@ -20,20 +20,19 @@ if($_SESSION["member_id"] != 1)
 </head>
 <body>
   <nav class="clear">
-    <div><a href=""><i class="material-icons">menu</i></a></div>
+    <div><i class="material-icons">menu</i></div>
     <div class="pull-right">
       <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
        /
       <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
     </div>
   </nav>
-  
+
   <div class="menu">
     <div class="close"><i class="material-icons">close</i></div>
     <ul>
       <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
       <li><a href="../activities/launch.php">我要發起活動</a></li>
-      <li><a href="../report/report.php">回報問題海灘</a></li>
       <li><a href="../achievement/achievement.php">成就達成</a></li>
       <li><a href="../achievement/post.php">我要分享成果</a></li>
       <li><a href="issue.php">相關議題報導</a></li>
@@ -41,7 +40,7 @@ if($_SESSION["member_id"] != 1)
       <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/logout.php">登出</a></li>
     </ul>
   </div>
-  
+
   <main class="clear">
 
     <div class="main-image" style="background-image: url(../../img/form_page_image_<?php echo mt_rand(1,4); ?>.jpg)"></div>

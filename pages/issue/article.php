@@ -65,6 +65,7 @@ if($result_next->num_rows){
 
 ?>
 
+
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -77,7 +78,7 @@ if($result_next->num_rows){
 </head>
 
 <body>
-  <script src="../../js/fb_share.js"></script>
+
   <nav>
     <div class="nav-container">
 

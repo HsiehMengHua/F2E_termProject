@@ -13,6 +13,7 @@ $x = 0;
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <link rel="shortcut icon" sizes="32x32" href="../../img/icon/favicon.ico">
   <title>用行動改變世界  為海洋保護盡一份心</title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -34,13 +35,12 @@ $x = 0;
       </div>
     </div>
   </nav>
-  
+
   <div class="menu">
     <div class="close"><i class="material-icons">close</i></div>
     <ul>
       <li class="current"><a href="">瀏覽所有活動</a></li>
       <li><a href="launch.php">我要發起活動</a></li>
-      <li><a href="../report/report.php">回報問題海灘</a></li>
       <li><a href="../achievement/achievement.php">成就達成</a></li>
       <li><a href="../achievement/post.php">我要分享成果</a></li>
       <li><a href="../issue/issue.php">相關議題報導</a></li>
@@ -48,13 +48,13 @@ $x = 0;
       <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/logout.php">登出</a></li>
     </ul>
   </div>
-  
+
   <main>
     <div class="jumbotron"><h1>「用行動改變世界，為海洋保護盡一份心。」</h1></div>
     <h1>下一場活動，<br>我來號召！</h1>
     <section>
       <a href="#" id="back-to-top" title="Back to top">&uarr;</a>
-      
+
       <div class="timeline">
         <div class="line"></div>
         <div class="middle">
@@ -111,18 +111,17 @@ $x = 0;
       </div>
     </section>
   </main>
-  
+
   <footer>
     <ul>
       <li><a href="">瀏覽活動</a></li>
       <li><a href="launch.php">發起活動</a></li>
-      <li><a href="../report/report.php">問題海灘回報</a></li>
       <li><a href="../achievement/achievement.php">成就達成</a></li>
       <li><a href="../issue/issue.php">相關議題報導</a></li>
     </ul>
     <p>Copyright &copy; 2016</p>
   </footer>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="../../js/menu.js"></script>
   <script>
@@ -132,8 +131,8 @@ $x = 0;
         loadPage();
       }
     });
-    
-    function loadPage(){      
+
+    function loadPage(){
       var xhttp = new XMLHttpRequest();
       xhttp.onreadystatechange = function() {
         if(xhttp.readyState == 4 && xhttp.status == 200) {
@@ -145,7 +144,7 @@ $x = 0;
       xhttp.send();
       n++;
     }
-    
+
     function join(id){
       //alert(id);
       var xhttp = new XMLHttpRequest();

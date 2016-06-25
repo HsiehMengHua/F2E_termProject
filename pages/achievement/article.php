@@ -22,9 +22,12 @@ $first_image = (isset($matches[1]))?$matches[1]:"../../img/transparent.png";
 // 選60天內瀏覽次數最高的前7個報導，sidebar用
 $sql_popular = "SELECT `id`,`location`,`act_date` FROM `achievement` ORDER BY `release_datetime` DESC LIMIT 7";
 $result_popular = $conn->query($sql_popular);
-$popularIdList = [];
-$popularLocationList = [];
-$popularDateList = [];
+//$popularIdList = [];
+//$popularLocationList = [];
+//$popularDateList = [];
+$popularIdList = array();
+$popularLocationList = array();
+$popularDateList = array();
 // 把多項結果存成陣列
 while($row_popular = $result_popular->fetch_assoc()){
   array_push($popularIdList,$row_popular['id']);
@@ -65,6 +68,7 @@ if($result_next->num_rows){
 <html lang="zh">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
   <title><?php echo $location."，".$act_date; ?></title>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link rel="stylesheet" href="../../css/style.css" />
@@ -77,22 +81,21 @@ if($result_next->num_rows){
 </head>
 
 <body>
- 
+
   <nav class="clear">
     <div><i class="material-icons">menu</i></div>
     <div class="pull-right">
       <?php echo (isset($_SESSION["member_id"]))?'<a href="">我的帳號</a>':'<a href="../member/register.php">註冊</a>' ?>
-       / 
+       /
       <?php echo (isset($_SESSION["member_id"]))?'<a href="../member/logout.php">登出</a>':'<a href="../member/login.php">登入</a>' ?>
     </div>
   </nav>
-  
+
   <div class="menu">
     <div class="close"><i class="material-icons">close</i></div>
     <ul>
       <li><a href="../activities/activities.php">瀏覽所有活動</a></li>
       <li><a href="../activities/launch.php">我要發起活動</a></li>
-      <li><a href="../report/report.php">回報問題海灘</a></li>
       <li><a href="achievement.php">成就達成</a></li>
       <li><a href="post.php">我要分享成果</a></li>
       <li><a href="../issue/issue.php">相關議題報導</a></li>
@@ -100,7 +103,7 @@ if($result_next->num_rows){
       <li class="<?php echo (isset($_SESSION[member_id]))?'':'hide'; ?>"><a href="../member/logout.php">登出</a></li>
     </ul>
   </div>
-  
+
   <main>
     <div class="container">
       <div class="clear">
@@ -160,13 +163,12 @@ if($result_next->num_rows){
     <ul>
       <li><a href="../activities/activities.php">瀏覽活動</a></li>
       <li><a href="../activities/launch.php">發起活動</a></li>
-      <li><a href="../report/report.php">問題海灘回報</a></li>
       <li><a href="achievement.php">成就達成</a></li>
       <li><a href="../issue/issue.php">相關議題報導</a></li>
     </ul>
     <p>Copyright &copy; 2016</p>
   </footer>
-  
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="../../js/menu.js"></script>
   <script>
